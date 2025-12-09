@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h1>Admin Dashboard</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card p-3 mb-3">
+            <h4>Tài khoản</h4>
+            <p>@ViewBag.UserCount users</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 mb-3">
+            <h4>Sản phẩm</h4>
+            <p>@ViewBag.ProductCount products</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card p-3 mb-3">
+            <h4>Biến thể</h4>
+            <p>@ViewBag.VariantCount variants</p>
+        </div>
+    </div>
+</div>
+
+<p>
+    Đây là trang quản trị. Bạn có thể thêm menu quản lý Category, Product, Users... sau.
+</p>

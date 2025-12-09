@@ -1,0 +1,54 @@
+﻿@model ShopHerePJ.Data.Entities.category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="container-fluid">
+    <h1 class="h3 mb-3">Edit Category</h1>
+
+    <form asp-area="Admin" asp-controller="Categories" asp-action="Edit" method="post">
+        @Html.AntiForgeryToken()
+
+        @* id + created_at giữ ở hidden để post về *@
+        <input type="hidden" asp-for="id" />
+        <input type="hidden" asp-for="created_at" />
+
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+        <div class="mb-3">
+            <label asp-for="slug" class="form-label"></label>
+            <input asp-for="name" class="form-control" />
+            <span asp-validation-for="name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="name" class="form-label"></label>
+            <input asp-for="slug" class="form-control" />
+            <span asp-validation-for="slug" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Parent category</label>
+            <select asp-for="parent_id" class="form-select" asp-items="ViewBag.parent_id">
+                <option value="">-- No parent --</option>
+            </select>
+            <span asp-validation-for="parent_id" class="text-danger"></span>
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="is_active" class="form-check-input" />
+            <label asp-for="is_active" class="form-check-label"></label>
+        </div>
+
+        <div class="mb-3 text-muted small">
+            <div>Created at: @Model.created_at.ToString("yyyy-MM-dd HH:mm:ss")</div>
+            <div>Last updated: @Model.updated_at.ToString("yyyy-MM-dd HH:mm:ss")</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-area="Admin" asp-controller="Categories" asp-action="Index" class="btn btn-secondary">
+            Back
+        </a>
+    </form>
+</div>
