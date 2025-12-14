@@ -1,30 +1,124 @@
 ﻿@{
-    ViewData["Title"] = "Admin Dashboard";
+    ViewData["Title"] = "Dashboard";
 }
 
-<h1>Admin Dashboard</h1>
+<div class="container-fluid p-0">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Admin Dashboard</h1>
+            <small class="text-muted">Tổng quan hệ thống quản trị</small>
+        </div>
+        <div class="d-flex gap-2">
+            <a asp-area="Admin" asp-controller="Users" asp-action="Index" class="btn btn-outline-primary btn-sm">
+                Manage Users
+            </a>
+            <a asp-area="Admin" asp-controller="Products" asp-action="Index" class="btn btn-outline-secondary btn-sm">
+                Manage Products
+            </a>
+        </div>
+    </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <div class="card p-3 mb-3">
-            <h4>Tài khoản</h4>
-            <p>@ViewBag.UserCount users</p>
+    <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6 col-xl-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small">Total Orders</div>
+                            <div class="fs-4 fw-bold">—</div>
+                        </div>
+                        <i class="bi bi-receipt fs-3 text-muted"></i>
+                    </div>
+                    <div class="text-muted small mt-2">Hôm nay / tuần này</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small">Total Users</div>
+                            <div class="fs-4 fw-bold">—</div>
+                        </div>
+                        <i class="bi bi-people fs-3 text-muted"></i>
+                    </div>
+                    <div class="text-muted small mt-2">Active / Inactive</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small">Products</div>
+                            <div class="fs-4 fw-bold">—</div>
+                        </div>
+                        <i class="bi bi-box-seam fs-3 text-muted"></i>
+                    </div>
+                    <div class="text-muted small mt-2">In stock / low stock</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-xl-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="text-muted small">Revenue</div>
+                            <div class="fs-4 fw-bold">—</div>
+                        </div>
+                        <i class="bi bi-cash-coin fs-3 text-muted"></i>
+                    </div>
+                    <div class="text-muted small mt-2">Tháng này</div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <div class="card p-3 mb-3">
-            <h4>Sản phẩm</h4>
-            <p>@ViewBag.ProductCount products</p>
+
+    <div class="row g-3">
+        <div class="col-12 col-lg-7">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white border-0">
+                    <span class="fw-semibold">Quick actions</span>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2">
+                        <a asp-area="Admin" asp-controller="Users" asp-action="Create" class="btn btn-primary">
+                            <i class="bi bi-person-plus me-1"></i> Create User
+                        </a>
+                        <a asp-area="Admin" asp-controller="Categories" asp-action="Create" class="btn btn-outline-primary">
+                            <i class="bi bi-tag me-1"></i> Create Category
+                        </a>
+                        <a asp-area="Admin" asp-controller="Products" asp-action="Create" class="btn btn-outline-secondary">
+                            <i class="bi bi-plus-square me-1"></i> Create Product
+                        </a>
+                        <a asp-area="Admin" asp-controller="Orders" asp-action="Index" class="btn btn-outline-dark">
+                            <i class="bi bi-receipt-cutoff me-1"></i> View Orders
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-md-4">
-        <div class="card p-3 mb-3">
-            <h4>Biến thể</h4>
-            <p>@ViewBag.VariantCount variants</p>
+
+        <div class="col-12 col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
+                    <span class="fw-semibold">System notes</span>
+                    <span class="badge bg-light text-muted">v1</span>
+                </div>
+                <div class="card-body">
+                    <ul class="mb-0 text-muted">
+                        <li>Sidebar có thể ẩn/hiện, trạng thái được lưu trên trình duyệt.</li>
+                        <li>Mobile: sidebar dạng overlay + backdrop.</li>
+                        <li>Menu tự highlight theo controller/action.</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
-<p>
-    Đây là trang quản trị. Bạn có thể thêm menu quản lý Category, Product, Users... sau.
-</p>

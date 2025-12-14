@@ -1,0 +1,51 @@
+﻿@model ShopHerePJ.Data.Entities.address
+@{
+    ViewData["Title"] = "Delete Address";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Delete Address</h1>
+            <small class="text-muted">Xác nhận xoá address</small>
+        </div>
+        <a href="@(Model.user_id.HasValue ? $"/Admin/Addresses/ByUser/{Model.user_id}" : "/Admin/Addresses")"
+           class="btn btn-secondary">Back</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p>Bạn chắc chắn muốn xoá address này?</p>
+
+            <dl class="row mb-0">
+                <dt class="col-sm-3">ID</dt>
+                <dd class="col-sm-9">@Model.id</dd>
+
+                <dt class="col-sm-3">User Id</dt>
+                <dd class="col-sm-9">@Model.user_id</dd>
+
+                <dt class="col-sm-3">Type</dt>
+                <dd class="col-sm-9">@Model.type</dd>
+
+                <dt class="col-sm-3">Recipient</dt>
+                <dd class="col-sm-9">@Model.recipient_name</dd>
+
+                <dt class="col-sm-3">Phone</dt>
+                <dd class="col-sm-9">@Model.phone</dd>
+
+                <dt class="col-sm-3">Address</dt>
+                <dd class="col-sm-9">@($"{Model.street}, {Model.ward}, {Model.district}, {Model.city}, {Model.country}")</dd>
+
+                <dt class="col-sm-3">Default</dt>
+                <dd class="col-sm-9">@Model.is_default</dd>
+            </dl>
+
+            <form asp-area="Admin" asp-controller="Addresses" asp-action="Delete" asp-route-id="@Model.id" method="post" class="mt-4">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a href="@(Model.user_id.HasValue ? $"/Admin/Addresses/ByUser/{Model.user_id}" : "/Admin/Addresses")"
+                   class="btn btn-outline-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

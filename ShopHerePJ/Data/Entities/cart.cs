@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopHerePJ.Models;
+using System;
 using System.Collections.Generic;
 
 namespace ShopHerePJ.Data.Entities;

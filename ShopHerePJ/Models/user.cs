@@ -1,7 +1,8 @@
-﻿using System;
+﻿using ShopHerePJ.Data.Entities;
+using System;
 using System.Collections.Generic;
 
-namespace ShopHerePJ.Data.Entities;
+namespace ShopHerePJ.Models;
 
 public partial class user
 {
