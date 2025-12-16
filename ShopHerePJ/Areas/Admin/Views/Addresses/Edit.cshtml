@@ -1,5 +1,130 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model ShopHerePJ.Areas.Admin.Models.AddressUpsertVM
+
 @{
+    ViewData["Title"] = "Edit Address";
+    var backUrl = Model.UserId.HasValue
+        ? $"/Admin/Addresses/ByUser/{Model.UserId}"
+        : "/Admin/Addresses";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Edit Address</h1>
+            <small class="text-muted">Cập nhật address</small>
+        </div>
+
+        <a href="@backUrl" class="btn btn-secondary">Back</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-area="Admin"
+                  asp-controller="Addresses"
+                  asp-action="Edit"
+                  asp-route-id="@Model.Id"
+                  method="post">
+                @Html.AntiForgeryToken()
+
+                <input type="hidden" asp-for="Id" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row g-3">
+                    <!-- USER -->
+                    <div class="col-md-6">
+                        <label class="form-label">User</label>
+                        <select asp-for="UserId" class="form-select" asp-items="ViewBag.UserSelect">
+                            <option value="">-- None --</option>
+                        </select>
+                        <span asp-validation-for="UserId" class="text-danger"></span>
+                    </div>
+
+                    <!-- TYPE -->
+                    <div class="col-md-3">
+                        <label asp-for="Type" class="form-label"></label>
+                        <select asp-for="Type" class="form-select">
+                            <option value="Shipping">Shipping</option>
+                            <option value="Billing">Billing</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span asp-validation-for="Type" class="text-danger"></span>
+                    </div>
+
+                    <!-- DEFAULT -->
+                    <div class="col-md-3 d-flex align-items-end">
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="IsDefault" />
+                            <label class="form-check-label" asp-for="IsDefault">Default</label>
+                        </div>
+                    </div>
+
+                    <!-- RECIPIENT -->
+                    <div class="col-md-6">
+                        <label asp-for="RecipientName" class="form-label"></label>
+                        <input asp-for="RecipientName" class="form-control" />
+                        <span asp-validation-for="RecipientName" class="text-danger"></span>
+                    </div>
+
+                    <!-- PHONE -->
+                    <div class="col-md-6">
+                        <label asp-for="Phone" class="form-label"></label>
+                        <input asp-for="Phone" class="form-control" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <!-- STREET -->
+                    <div class="col-md-12">
+                        <label asp-for="Street" class="form-label"></label>
+                        <input asp-for="Street" class="form-control" />
+                        <span asp-validation-for="Street" class="text-danger"></span>
+                    </div>
+
+                    <!-- WARD -->
+                    <div class="col-md-4">
+                        <label asp-for="Ward" class="form-label"></label>
+                        <input asp-for="Ward" class="form-control" />
+                        <span asp-validation-for="Ward" class="text-danger"></span>
+                    </div>
+
+                    <!-- DISTRICT -->
+                    <div class="col-md-4">
+                        <label asp-for="District" class="form-label"></label>
+                        <input asp-for="District" class="form-control" />
+                        <span asp-validation-for="District" class="text-danger"></span>
+                    </div>
+
+                    <!-- CITY -->
+                    <div class="col-md-4">
+                        <label asp-for="City" class="form-label"></label>
+                        <input asp-for="City" class="form-control" />
+                        <span asp-validation-for="City" class="text-danger"></span>
+                    </div>
+
+                    <!-- POSTAL -->
+                    <div class="col-md-6">
+                        <label asp-for="PostalCode" class="form-label"></label>
+                        <input asp-for="PostalCode" class="form-control" />
+                        <span asp-validation-for="PostalCode" class="text-danger"></span>
+                    </div>
+
+                    <!-- COUNTRY -->
+                    <div class="col-md-6">
+                        <label asp-for="Country" class="form-label"></label>
+                        <input asp-for="Country" class="form-control" />
+                        <span asp-validation-for="Country" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button class="btn btn-primary" type="submit">Update</button>
+                    <a href="@backUrl" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

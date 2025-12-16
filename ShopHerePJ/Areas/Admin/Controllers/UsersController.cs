@@ -109,6 +109,14 @@ namespace ShopHerePJ.Areas.Admin.Controllers
                 Status = entity.status
             };
 
+            var avatar = await _context.images.AsNoTracking()
+            .Where(x => x.object_type == "user" && x.object_id == id && x.is_primary)
+            .OrderByDescending(x => x.id)
+            .FirstOrDefaultAsync();
+
+            ViewBag.AvatarImageId = avatar?.id;
+
+
             return View(vm);
         }
 

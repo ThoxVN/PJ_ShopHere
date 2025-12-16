@@ -1,0 +1,77 @@
+﻿@model ShopHerePJ.Areas.Admin.Models.ProductReviewUpsertVM
+@{
+    ViewData["Title"] = "Edit Review";
+    var backUrl = $"/Admin/ProductReviews?productId={Model.ProductId}";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Edit Review</h1>
+            <small class="text-muted">Cập nhật đánh giá</small>
+        </div>
+        <a href="@backUrl" class="btn btn-secondary">Back</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-area="Admin" asp-controller="ProductReviews" asp-action="Edit" asp-route-id="@Model.Id" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Product</label>
+                        <select asp-for="ProductId" class="form-select" asp-items="ViewBag.ProductSelect"></select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">User</label>
+                        <select asp-for="UserId" class="form-select" asp-items="ViewBag.UserSelect">
+                            <option value="">-- Guest/None --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label asp-for="Rating" class="form-label"></label>
+                        <select asp-for="Rating" class="form-select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3 d-flex align-items-end">
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="IsApproved" />
+                            <label class="form-check-label" asp-for="IsApproved">Approved</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12">
+                        <label asp-for="Content" class="form-label"></label>
+                        <textarea asp-for="Content" class="form-control" rows="6"></textarea>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button class="btn btn-primary" type="submit">Update</button>
+                    <a href="@backUrl" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

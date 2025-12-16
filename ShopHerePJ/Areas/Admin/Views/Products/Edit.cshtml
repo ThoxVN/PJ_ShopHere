@@ -1,0 +1,112 @@
+﻿@model ShopHerePJ.Areas.Admin.Models.ProductUpsertVM
+
+@{
+    ViewData["Title"] = "Edit Product";
+    var imgId = (int?)ViewBag.ProductImageId;
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Edit Product</h1>
+            <small class="text-muted">Cập nhật product + upload ảnh</small>
+        </div>
+        <a href="/Admin/Products" class="btn btn-secondary">Back</a>
+    </div>
+
+    <!-- IMAGE UPLOAD CARD -->
+    <div class="card shadow-sm mb-3">
+        <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <div class="d-flex align-items-center gap-3">
+                <div>
+                    @if (imgId.HasValue)
+                    {
+                        <img src="/Admin/Images/File?id=@imgId"
+                             class="rounded border"
+                             style="width:96px;height:96px;object-fit:cover;" />
+                    }
+                    else
+                    {
+                        <div class="rounded border bg-light d-flex align-items-center justify-content-center"
+                             style="width:96px;height:96px;">
+                            <span class="text-muted">No image</span>
+                        </div>
+                    }
+                </div>
+                <div>
+                    <div class="fw-semibold">Product Image (Primary)</div>
+                    <small class="text-muted">Upload JPG/PNG, tối đa 2MB</small>
+                </div>
+            </div>
+
+            <form asp-area="Admin" asp-controller="Images" asp-action="UploadProductPrimary"
+                  method="post" enctype="multipart/form-data" class="d-flex align-items-center gap-2">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="productId" value="@Model.Id" />
+                <input id="productFile" name="file" type="file" accept="image/*"
+                       class="form-control form-control-sm" style="max-width:260px;" />
+                <button class="btn btn-primary btn-sm" type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- EDIT FORM -->
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@Model.Id" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Category</label>
+                        <select asp-for="CategoryId" class="form-select" asp-items="ViewBag.CategorySelect">
+                            <option value="">-- None --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Sku" class="form-label"></label>
+                        <input asp-for="Sku" class="form-control" />
+                        <span asp-validation-for="Sku" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label asp-for="Material" class="form-label"></label>
+                        <input asp-for="Material" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6 d-flex align-items-end">
+                        <div class="form-check">
+                            <input class="form-check-input" asp-for="IsActive" />
+                            <label class="form-check-label" asp-for="IsActive">Active</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label asp-for="DescriptionHtml" class="form-label"></label>
+                        <textarea asp-for="DescriptionHtml" class="form-control" rows="6"
+                                  placeholder="Có thể nhập HTML..."></textarea>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button class="btn btn-primary" type="submit">Update</button>
+                    <a href="/Admin/Products" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

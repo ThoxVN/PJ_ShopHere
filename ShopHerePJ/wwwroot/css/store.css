@@ -1,0 +1,66 @@
+﻿.hero-img {
+    vertical-align: middle;
+    width: 100%;
+}
+
+/* ===== Product cards (Home) ===== */
+.product-card {
+    border: 1px solid rgba(0,0,0,.08);
+    border-radius: 16px;
+    overflow: hidden;
+    background: #fff;
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+
+    .product-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 24px rgba(0,0,0,.08);
+    }
+
+/* Khung ảnh: cố định chiều cao 225px, căn giữa */
+.product-thumb {
+    height: 225px; /* ✅ chiều cao ảnh theo yêu cầu */
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px; /* tạo khoảng thở giống theme mẫu */
+}
+
+    /* Ảnh: cao 225px, rộng tự động, không bị cắt */
+    .product-thumb img {
+        height: 225px; /* ✅ */
+        width: auto; /* ✅ */
+        max-width: 100%; /* không vượt card */
+        object-fit: contain; /* ✅ không crop */
+        display: block;
+    }
+
+/* Meta */
+.product-meta {
+    padding: 10px 14px 14px;
+}
+
+    .product-meta .cat {
+        font-size: 11px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #6c757d;
+    }
+
+    .product-meta .name {
+        font-weight: 650;
+        margin: 6px 0 10px;
+        line-height: 1.2;
+        max-height: 34px; /* giữ đều chiều cao (≈2 dòng) */
+        overflow: hidden;
+    }
+
+    .product-meta .price {
+        font-weight: 700;
+    }
+
+    .product-meta .rating {
+        font-size: 12px;
+        color: #6c757d;
+    }

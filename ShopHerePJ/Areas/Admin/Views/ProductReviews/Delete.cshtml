@@ -1,0 +1,44 @@
+﻿@model ShopHerePJ.Data.Entities.product_review
+@{
+    ViewData["Title"] = "Delete Review";
+    var backUrl = $"/Admin/ProductReviews?productId={Model.product_id}";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Delete Review</h1>
+            <small class="text-muted">Xác nhận xoá review</small>
+        </div>
+        <a href="@backUrl" class="btn btn-secondary">Back</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p>Bạn chắc chắn muốn xoá review này?</p>
+
+            <dl class="row mb-0">
+                <dt class="col-sm-3">ID</dt>
+                <dd class="col-sm-9">@Model.id</dd>
+
+                <dt class="col-sm-3">Product</dt>
+                <dd class="col-sm-9">@Model.product?.name (@Model.product?.sku)</dd>
+
+                <dt class="col-sm-3">User</dt>
+                <dd class="col-sm-9">@Model.user?.email</dd>
+
+                <dt class="col-sm-3">Rating</dt>
+                <dd class="col-sm-9">@Model.rating</dd>
+
+                <dt class="col-sm-3">Approved</dt>
+                <dd class="col-sm-9">@Model.is_approved</dd>
+            </dl>
+
+            <form asp-area="Admin" asp-controller="ProductReviews" asp-action="Delete" asp-route-id="@Model.id" method="post" class="mt-4">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a href="@backUrl" class="btn btn-outline-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

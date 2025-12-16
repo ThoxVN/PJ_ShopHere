@@ -1,8 +1,131 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model ShopHerePJ.Models.StoreHomeViewModel
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- HERO -->
+<section class="hero-wrap">
+    <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                <div class="hero-slide">
+                    <div class="container position-relative">
+                        <div class="row">
+                            <div class="col-lg-6 hero-content">
+                                <div class="hero-kicker mb-2">Urban Edge</div>
+                                <h1 class="display-4 mb-3">Jackets for the<br />Modern Man</h1>
+                                <a class="btn btn-light btn-lg" href="#">Discover Now</a>
+                            </div>
+                        </div>
+                        <img class="hero-img"
+                             src="~/images/hero/hero-1.png"
+                             alt="Hero" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="hero-slide">
+                    <div class="container position-relative">
+                        <div class="row">
+                            <div class="col-lg-6 hero-content">
+                                <div class="hero-kicker mb-2">New Season</div>
+                                <h1 class="display-4 mb-3">Fresh Looks<br />Everyday</h1>
+                                <a class="btn btn-light btn-lg" href="#">Shop Now</a>
+                            </div>
+                        </div>
+                        <img class="hero-img"
+                             src="~/images/hero/hero-2.png"
+                             alt="Hero" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section class="container">
+    <div class="section-title">
+        <h2>New Arrivals</h2>
+        <div class="text-muted">Sản phẩm mới lên kệ</div>
+    </div>
+
+    <ul class="nav justify-content-center cat-tabs mb-4" id="catTabs">
+        @for (int i = 0; i < Model.Tabs.Count; i++)
+        {
+            var tab = Model.Tabs[i];
+            var key = tab.ToLower();
+            <li class="nav-item">
+                <button class="nav-link @(i == 0 ? "active" : "")" type="button" data-filter="@key">@tab</button>
+            </li>
+        }
+    </ul>
+
+    <div class="row g-3" id="productGrid">
+        @foreach (var p in Model.NewArrivals)
+        {
+            <div class="col-6 col-md-4 col-lg-3 product-item" data-cat="@p.CategoryKey">
+                <div class="product-card">
+                    <div class="product-thumb">
+                        @if (p.ImageId.HasValue)
+                        {
+                            <img src="@($"/media/image/{p.ImageId}")" alt="@p.Name" />
+                        }
+                        else
+                        {
+                            <img src="~/images/placeholder.png" alt="@p.Name" />
+                        }
+                    </div>
+                    <div class="product-meta">
+                        <div class="cat">@p.CategoryName</div>
+                        <div class="name">@p.Name</div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="price">
+                                @(p.Price.HasValue ? $"{p.Price.Value:N0} đ" : "—")
+                            </div>
+                            <div class="rating">
+                                ★ @p.AvgRating.ToString("0.0") (@p.ReviewCount)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>
+
+
+@section Scripts {
+    <script>
+        // simple tab filter (client-side)
+        const tabs = document.querySelectorAll('#catTabs [data-filter]');
+        const items = document.querySelectorAll('#productGrid .product-item');
+
+        function applyFilter(key){
+            items.forEach(it => {
+                if(key === 'all') { it.style.display = ''; return; }
+                const c = (it.getAttribute('data-cat') || '').toLowerCase();
+                it.style.display = (c.includes(key)) ? '' : 'none';
+            });
+        }
+
+        tabs.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabs.forEach(x => x.classList.remove('active'));
+                btn.classList.add('active');
+                applyFilter(btn.getAttribute('data-filter'));
+            });
+        });
+    </script>
+}
