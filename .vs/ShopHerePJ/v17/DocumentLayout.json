@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\data\\entities\\product_variant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\data\\entities\\product_variant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\wwwroot\\css\\store.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\wwwroot\\css\\store.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\data\\entities\\product_review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\data\\entities\\product_review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\data\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\data\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "product_variant.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product_variant.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Data\\Entities\\product_variant.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product_variant.cs",
+              "RelativeToolTip": "ShopHerePJ\\Data\\Entities\\product_variant.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAA8wCMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T15:11:31.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "product.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Data\\Entities\\product.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product.cs",
+              "RelativeToolTip": "ShopHerePJ\\Data\\Entities\\product.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA6wB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T15:11:25.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "product_review.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product_review.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Data\\Entities\\product_review.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product_review.cs",
+              "RelativeToolTip": "ShopHerePJ\\Data\\Entities\\product_review.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-16T15:11:25.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "store.css",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\wwwroot\\css\\store.css",
+              "RelativeDocumentMoniker": "ShopHerePJ\\wwwroot\\css\\store.css",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\wwwroot\\css\\store.css",
+              "RelativeToolTip": "ShopHerePJ\\wwwroot\\css\\store.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-12-16T15:01:21.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-16T15:00:10.543Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

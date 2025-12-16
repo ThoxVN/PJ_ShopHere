@@ -441,3 +441,19 @@ END;
 GO
 
 
+CREATE TABLE images (
+    id              INT IDENTITY(1,1) PRIMARY KEY,
+    object_type     NVARCHAR(50) NOT NULL,    -- ví dụ: "product", "user"
+    object_id       INT NOT NULL,             -- id của object
+    file_name       NVARCHAR(255) NULL,
+    content_type    NVARCHAR(100) NOT NULL,   -- image/jpeg, image/png...
+    file_size       INT NOT NULL,
+    data            VARBINARY(MAX) NOT NULL,  -- bytes ảnh
+    is_primary      BIT NOT NULL DEFAULT 0,
+    created_at      DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+);
+
+CREATE INDEX IX_images_object ON images(object_type, object_id);
+
+
+
