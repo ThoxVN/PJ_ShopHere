@@ -1,0 +1,112 @@
+﻿@model IEnumerable<ShopHerePJ.Data.Entities.product_variant>
+@{
+    ViewData["Title"] = "Product Variants";
+    var productId = (int?)ViewBag.ProductId;
+    var productLabel = ViewBag.ProductLabel as string;
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Variant Management</h1>
+            <small class="text-muted">
+                @if (productId.HasValue)
+                {
+                    <span>Variants của: <b>@productLabel</b></span>
+                }
+                else
+                {
+                    <span>Quản lý SKU (size/color) trong hệ thống</span>
+                }
+            </small>
+        </div>
+
+        <div class="d-flex gap-2">
+            <a asp-area="Admin" asp-controller="ProductVariants" asp-action="Create" asp-route-productId="@productId"
+               class="btn btn-primary">Create New</a>
+
+            @if (productId.HasValue)
+            {
+                <a asp-area="Admin" asp-controller="Products" asp-action="Edit" asp-route-id="@productId"
+                   class="btn btn-secondary">Back to Product</a>
+            }
+        </div>
+    </div>
+
+    <form method="post" asp-area="Admin" asp-controller="ProductVariants" asp-action="Search" class="mb-3">
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="productId" value="@productId" />
+        <div class="input-group">
+            <input type="text" name="search" value="@ViewBag.Search"
+                   class="form-control" placeholder="Tìm theo SKU, size, color, product...">
+            <button class="btn btn-primary" type="submit">Tìm kiếm</button>
+            <a href="@(productId.HasValue ? $"/Admin/ProductVariants/ByProduct/{productId}" : "/Admin/ProductVariants")"
+               class="btn btn-secondary">Reset</a>
+        </div>
+    </form>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-white border-0">
+            <span class="fw-semibold">Variant list</span>
+        </div>
+
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Variant SKU</th>
+                            <th>Size</th>
+                            <th>Color</th>
+                            <th class="text-end">Price Modifier</th>
+                            <th class="text-center">Active</th>
+                            <th>Updated</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (!Model.Any())
+                        {
+                            <tr>
+                                <td colspan="9" class="text-center text-muted py-4">Không có dữ liệu.</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            foreach (var v in Model)
+                            {
+                                <tr>
+                                    <td class="text-muted">@v.id</td>
+                                    <td>
+                                        <div class="fw-semibold">@v.product?.name</div>
+                                        <small class="text-muted">@v.product?.sku</small>
+                                    </td>
+                                    <td class="fw-semibold">@v.sku</td>
+                                    <td>@v.size</td>
+                                    <td>@v.color</td>
+                                    <td class="text-end">@v.price_modifier.ToString("N0")</td>
+                                    <td class="text-center">
+                                        <span class="badge @(v.is_active ? "bg-success" : "bg-secondary")">
+                                            @(v.is_active ? "Active" : "Inactive")
+                                        </span>
+                                    </td>
+                                    <td>@v.updated_at</td>
+                                    <td class="text-end">
+                                        <div class="btn-group btn-group-sm">
+                                            <a asp-area="Admin" asp-controller="ProductVariants" asp-action="Edit" asp-route-id="@v.id"
+                                               class="btn btn-outline-primary">Edit</a>
+                                            <a asp-area="Admin" asp-controller="ProductVariants" asp-action="Delete" asp-route-id="@v.id"
+                                               class="btn btn-outline-danger">Delete</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

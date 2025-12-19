@@ -1,0 +1,62 @@
+﻿@model ShopHerePJ.Data.Entities.order_item
+@{
+    ViewData["Title"] = "Delete Order Item";
+    var backUrl = $"/Admin/OrderItems?orderId={Model.order_id}";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Delete Order Item</h1>
+            <small class="text-muted">Xác nhận xoá line item</small>
+        </div>
+        <a href="@backUrl" class="btn btn-secondary">Back</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p>Bạn chắc chắn muốn xoá item này?</p>
+
+            <dl class="row mb-0">
+                <dt class="col-sm-3">ID</dt>
+                <dd class="col-sm-9">@Model.id</dd>
+
+                <dt class="col-sm-3">Order ID</dt>
+                <dd class="col-sm-9">@Model.order_id</dd>
+
+                <dt class="col-sm-3">SKU</dt>
+                <dd class="col-sm-9">@Model.sku_snapshot</dd>
+
+                <dt class="col-sm-3">Product</dt>
+                <dd class="col-sm-9">@Model.product_name_snapshot</dd>
+
+                <dt class="col-sm-3">Variant</dt>
+                <dd class="col-sm-9">@Model.variant_name_snapshot</dd>
+
+                <dt class="col-sm-3">Quantity</dt>
+                <dd class="col-sm-9">@Model.quantity</dd>
+
+                <dt class="col-sm-3">Unit Price</dt>
+                <dd class="col-sm-9">@Model.unit_price.ToString("N0")</dd>
+
+                <dt class="col-sm-3">Discount</dt>
+                <dd class="col-sm-9">@Model.line_discount_amount.ToString("N0")</dd>
+
+                <dt class="col-sm-3">Line Total</dt>
+                <dd class="col-sm-9"><b>@Model.line_total.ToString("N0")</b></dd>
+            </dl>
+
+            <form asp-area="Admin"
+                  asp-controller="OrderItems"
+                  asp-action="Delete"
+                  asp-route-id="@Model.id"
+                  method="post"
+                  class="mt-4">
+                @Html.AntiForgeryToken()
+
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a href="@backUrl" class="btn btn-outline-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

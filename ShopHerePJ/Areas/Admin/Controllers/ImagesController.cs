@@ -110,5 +110,48 @@ namespace ShopHerePJ.Areas.Admin.Controllers
             return RedirectToAction("Edit", "Products", new { area = "Admin", id = productId });
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UploadVariantPrimary(int variantId, IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return RedirectToAction("Edit", "ProductVariants", new { area = "Admin", id = variantId });
+
+            if (!file.ContentType.StartsWith("image/"))
+                return BadRequest("Only image files are allowed.");
+
+            if (file.Length > 2 * 1024 * 1024)
+                return BadRequest("Max 2MB.");
+
+            byte[] bytes;
+            using (var ms = new MemoryStream())
+            {
+                await file.CopyToAsync(ms);
+                bytes = ms.ToArray();
+            }
+
+            var olds = await _context.images
+                .Where(x => x.object_type == "product_variant" && x.object_id == variantId && x.is_primary)
+                .ToListAsync();
+            foreach (var o in olds) o.is_primary = false;
+
+            var img = new image
+            {
+                object_type = "product_variant",
+                object_id = variantId,
+                file_name = file.FileName,
+                content_type = file.ContentType,
+                file_size = (int)file.Length,
+                data = bytes,
+                is_primary = true,
+                created_at = DateTime.Now
+            };
+
+            _context.images.Add(img);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Edit", "ProductVariants", new { area = "Admin", id = variantId });
+        }
+
     }
 }

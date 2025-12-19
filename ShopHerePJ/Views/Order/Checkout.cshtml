@@ -1,0 +1,197 @@
+﻿@model ShopHerePJ.Models.CheckoutConfirmVM
+@{
+    ViewData["Title"] = "Thanh toán";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<style>
+    .ck-wrap {
+        padding: 24px 0;
+    }
+
+    .ck-card {
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: 18px;
+        background: #fff;
+    }
+
+        .ck-card .ck-title {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+    .ck-muted {
+        color: #6c757d;
+        font-size: 13px;
+    }
+
+    .ck-item {
+        display: flex;
+        gap: 12px;
+        padding: 12px 0;
+        border-top: 1px solid rgba(0,0,0,.06);
+    }
+
+        .ck-item:first-child {
+            border-top: 0;
+        }
+
+    .ck-thumb {
+        width: 64px;
+        height: 64px;
+        border-radius: 14px;
+        border: 1px solid rgba(0,0,0,.08);
+        background: #f6f7f8;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .ck-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 6px;
+        }
+    /* không zoom vỡ */
+
+    .ck-total {
+        font-size: 18px;
+        font-weight: 800;
+    }
+</style>
+
+<div class="container ck-wrap">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h4 mb-0">Thanh toán</h1>
+        <a class="btn btn-outline-secondary" asp-controller="Cart" asp-action="Index">Quay lại giỏ</a>
+    </div>
+
+    @if (Model == null || Model.Items == null || !Model.Items.Any())
+    {
+        <div class="text-muted">Không có sản phẩm nào được chọn để thanh toán.</div>
+    }
+    else
+    {
+        <form asp-controller="Order" asp-action="PlaceOrder" method="post">
+            @Html.AntiForgeryToken()
+
+            <div class="row g-3">
+                <!-- LEFT -->
+                <div class="col-lg-7">
+                    <div class="ck-card p-3 mb-3">
+                        <div class="ck-title mb-2">Thông tin khách</div>
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <div class="ck-muted">Email</div>
+                                <input class="form-control" value="@Model.Email" disabled />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ck-muted">Họ tên</div>
+                                <input class="form-control" value="@Model.FullName" disabled />
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ck-muted">Số điện thoại</div>
+                                <input class="form-control" value="@Model.Phone" disabled />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ck-card p-3 mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="ck-title">Địa chỉ giao hàng</div>
+                            <a class="btn btn-sm btn-outline-dark" asp-controller="Account" asp-action="Addresses">Quản lý</a>
+                        </div>
+
+                        <select class="form-select" name="ShippingAddressId" required>
+                            @foreach (var a in Model.ShippingAddresses)
+                            {
+                                <option value="@a.id" selected="@(a.id == Model.ShippingAddressId)">
+                                    @(a.recipient_name ?? "—") - @(a.phone ?? "—") - @(a.street ?? "") @(a.city ?? "")
+                                    @(a.is_default ? "(Default)" : "")
+                                </option>
+                            }
+                        </select>
+                        <span asp-validation-for="ShippingAddressId" class="text-danger"></span>
+                    </div>
+
+                    <div class="ck-card p-3">
+                        <div class="ck-title mb-2">Ghi chú</div>
+                        <textarea class="form-control" name="CustomerNote" rows="3"
+                              placeholder="Ghi chú cho người bán...">@Model.CustomerNote</textarea>
+                    </div>
+                </div>
+
+                <!-- RIGHT -->
+                <div class="col-lg-5">
+                    <div class="ck-card p-3 mb-3">
+                        <div class="ck-title mb-2">Sản phẩm mua</div>
+
+                        @foreach (var it in Model.Items)
+                        {
+                            var img = it.ImageId.HasValue ? $"/media/image/{it.ImageId}" : Url.Content("~/images/placeholder.png");
+                            <div class="ck-item">
+                                <div class="ck-thumb"><img src="@img" alt="@it.ProductName" /></div>
+
+                                <div class="flex-grow-1">
+                                    <div class="fw-semibold">@it.ProductName</div>
+                                    <div class="ck-muted">@it.VariantSku - @it.VariantName</div>
+                                    <div class="ck-muted">SL: @it.Quantity</div>
+                                </div>
+
+                                <div class="text-end">
+                                    <div class="fw-semibold">@it.LineTotal.ToString("N0") đ</div>
+                                    <div class="ck-muted">@it.UnitPrice.ToString("N0") đ</div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="ck-card p-3 mb-3">
+                        <div class="ck-title mb-2">Phương thức thanh toán</div>
+
+                        <div class="form-check mb-2">
+                            <input class="form-check-input" type="radio" name="PaymentMethod" value="COD" checked />
+                            <label class="form-check-label">COD (Thanh toán khi nhận hàng)</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="PaymentMethod" value="BANK" disabled />
+                            <label class="form-check-label text-muted">Chuyển khoản (chưa hỗ trợ)</label>
+                        </div>
+                    </div>
+
+                    <div class="ck-card p-3">
+                        <div class="d-flex justify-content-between">
+                            <div class="ck-muted">Tạm tính</div>
+                            <div class="fw-semibold">@Model.Subtotal.ToString("N0") đ</div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="ck-muted">Phí ship</div>
+                            <div class="fw-semibold">@Model.ShippingFee.ToString("N0") đ</div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div class="ck-muted">Thuế</div>
+                            <div class="fw-semibold">@Model.TaxAmount.ToString("N0") đ</div>
+                        </div>
+
+                        <hr />
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="fw-bold">Tổng cộng</div>
+                            <div class="ck-total">@Model.GrandTotal.ToString("N0") đ</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-dark w-100 mt-3">
+                            Xác nhận đặt hàng
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

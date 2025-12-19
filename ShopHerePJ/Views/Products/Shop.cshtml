@@ -1,0 +1,255 @@
+﻿@model ShopHerePJ.Models.ShopListVM
+@{
+    ViewData["Title"] = "Shop";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<style>
+    .shop-wrap {
+        padding: 26px 0;
+    }
+
+    .shop-hero {
+        border-radius: 22px;
+        background: linear-gradient(135deg,#0f172a,#1f2937);
+        color: #fff;
+        padding: 18px 18px;
+        border: 1px solid rgba(255,255,255,.12);
+        box-shadow: 0 12px 30px rgba(0,0,0,.10);
+    }
+
+        .shop-hero h1 {
+            font-size: 20px;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .shop-hero .sub {
+            opacity: .82;
+            font-size: 13px;
+            margin-top: 3px;
+        }
+
+    .filter-card {
+        margin-top: 12px;
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 10px 26px rgba(0,0,0,.06);
+        overflow: hidden;
+    }
+
+        .filter-card .bd {
+            padding: 14px 14px;
+        }
+
+    .form-control, .form-select {
+        border-radius: 14px;
+    }
+
+    .btn-pill {
+        border-radius: 999px;
+        font-weight: 800;
+        padding: 10px 14px;
+    }
+
+    .btn-dark2 {
+        background: #111827;
+        border-color: #111827;
+        color: #fff;
+    }
+
+        .btn-dark2:hover {
+            background: #0b1220;
+            border-color: #0b1220;
+            color: #fff;
+        }
+
+    .grid {
+        margin-top: 14px;
+    }
+
+    .p-card {
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: 18px;
+        background: #fff;
+        overflow: hidden;
+        transition: transform .12s ease, box-shadow .12s ease;
+        box-shadow: 0 8px 20px rgba(0,0,0,.05);
+        height: 100%;
+    }
+
+        .p-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(0,0,0,.08);
+        }
+
+    .p-thumb {
+        background: #f6f7f8;
+        height: 225px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+        .p-thumb img {
+            max-height: 100%;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+            padding: 14px;
+        }
+
+    .p-body {
+        padding: 12px 14px 14px;
+    }
+
+    .p-cat {
+        font-size: 11px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #6b7280;
+        font-weight: 800;
+    }
+
+    .p-name {
+        font-size: 15px;
+        font-weight: 900;
+        color: #111827;
+        margin: 6px 0 8px;
+        line-height: 1.2;
+        min-height: 38px;
+    }
+
+    .p-meta {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .p-price {
+        font-weight: 900;
+    }
+
+    .p-rating {
+        font-size: 12px;
+        color: #6b7280;
+        white-space: nowrap;
+    }
+
+    .stars {
+        color: #f59e0b;
+        margin-right: 4px;
+    }
+
+    .p-actions {
+        margin-top: 10px;
+        display: flex;
+        gap: 8px;
+    }
+
+    .btn-soft {
+        border-radius: 999px;
+        font-weight: 800;
+        padding: 8px 12px;
+        border: 1px solid rgba(0,0,0,.10);
+        background: #f8fafc;
+    }
+</style>
+
+<div class="container shop-wrap">
+    <div class="shop-hero">
+        <h1>Shop</h1>
+        <div class="sub">Tất cả sản phẩm hiện có • Lọc theo tên, danh mục, rating</div>
+    </div>
+
+    <div class="filter-card">
+        <div class="bd">
+            <form method="get" asp-controller="Products" asp-action="Shop" class="row g-2 align-items-end">
+                <div class="col-12 col-lg-5">
+                    <label class="form-label mb-1">Name</label>
+                    <input name="q" value="@Model.Q" class="form-control" placeholder="Tìm theo tên hoặc SKU..." />
+                </div>
+
+                <div class="col-12 col-lg-4">
+                    <label class="form-label mb-1">Category</label>
+                    <select name="categoryId" class="form-select">
+                        <option value="">All categories</option>
+                        @foreach (var c in Model.Categories)
+                        {
+                            <option value="@c.Id" selected="@(Model.CategoryId == c.Id)">@c.Name</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-12 col-lg-2">
+                    <label class="form-label mb-1">Rating</label>
+                    <select name="minRating" class="form-select">
+                        <option value="" selected="@(Model.MinRating == null)">All</option>
+                        <option value="4" selected="@(Model.MinRating == 4)">4+ stars</option>
+                        <option value="3" selected="@(Model.MinRating == 3)">3+ stars</option>
+                        <option value="2" selected="@(Model.MinRating == 2)">2+ stars</option>
+                        <option value="1" selected="@(Model.MinRating == 1)">1+ star</option>
+                    </select>
+                </div>
+
+                <div class="col-12 col-lg-1 d-grid">
+                    <button class="btn btn-dark2 btn-pill" type="submit">Filter</button>
+                </div>
+
+                <div class="col-12 text-end">
+                    <a class="btn btn-soft" href="@Url.Action("Shop", "Products")">Reset</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="row g-3 grid">
+        @if (Model.Items == null || !Model.Items.Any())
+        {
+            <div class="col-12">
+                <div class="text-muted">Không tìm thấy sản phẩm phù hợp.</div>
+            </div>
+        }
+        else
+        {
+            foreach (var p in Model.Items)
+            {
+                var imgUrl = p.ImageId.HasValue ? $"/media/image/{p.ImageId}" : Url.Content("~/images/placeholder.png");
+
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="p-card">
+                        <a asp-controller="Products" asp-action="Details" asp-route-id="@p.Id" style="text-decoration:none;">
+                            <div class="p-thumb">
+                                <img src="@imgUrl" alt="@p.Name" />
+                            </div>
+                        </a>
+
+                        <div class="p-body">
+                            <div class="p-cat">@p.CategoryName</div>
+                            <div class="p-name">@p.Name</div>
+
+                            <div class="p-meta">
+                                <div class="p-price">@((p.PriceFrom.HasValue) ? $"{p.PriceFrom.Value:N0} đ" : "—")</div>
+                                <div class="p-rating">
+                                    <span class="stars">★</span>
+                                    @p.AvgRating.ToString("0.0") (@p.ReviewCount)
+                                </div>
+                            </div>
+
+                            <div class="p-actions">
+                                <a class="btn btn-dark2 btn-pill"
+                                   asp-controller="Products" asp-action="Details" asp-route-id="@p.Id">
+                                    Buy
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

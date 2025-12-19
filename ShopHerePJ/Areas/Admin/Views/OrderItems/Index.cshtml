@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ShopHerePJ.Data.Entities.order_item>
+@{
+    ViewData["Title"] = "Order Items";
+    var orderId = (int)ViewBag.OrderId;
+    var orderNo = (string)ViewBag.OrderNumber;
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Order Items</h1>
+            <small class="text-muted">Order: <b>@orderNo</b></small>
+        </div>
+        <div class="d-flex gap-2">
+            <a asp-area="Admin" asp-controller="OrderItems" asp-action="Create" asp-route-orderId="@orderId" class="btn btn-primary">Add Item</a>
+            <a asp-area="Admin" asp-controller="Orders" asp-action="Edit" asp-route-id="@orderId" class="btn btn-secondary">Back to Order</a>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>ID</th>
+                            <th>SKU</th>
+                            <th>Name Snapshot</th>
+                            <th class="text-end">Qty</th>
+                            <th class="text-end">Unit</th>
+                            <th class="text-end">Discount</th>
+                            <th class="text-end">Line Total</th>
+                            <th class="text-end">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var i in Model)
+                        {
+                            <tr>
+                                <td class="text-muted">@i.id</td>
+                                <td class="fw-semibold">@i.sku_snapshot</td>
+                                <td>
+                                    <div class="fw-semibold">@i.product_name_snapshot</div>
+                                    <small class="text-muted">@i.variant_name_snapshot</small>
+                                </td>
+                                <td class="text-end">@i.quantity</td>
+                                <td class="text-end">@i.unit_price.ToString("N0")</td>
+                                <td class="text-end">@i.line_discount_amount.ToString("N0")</td>
+                                <td class="text-end fw-semibold">@i.line_total.ToString("N0")</td>
+                                <td class="text-end">
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-area="Admin" asp-controller="OrderItems" asp-action="Edit" asp-route-id="@i.id" class="btn btn-outline-primary">Edit</a>
+                                        <a asp-area="Admin" asp-controller="OrderItems" asp-action="Delete" asp-route-id="@i.id" class="btn btn-outline-danger">Delete</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

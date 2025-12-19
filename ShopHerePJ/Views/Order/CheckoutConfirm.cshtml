@@ -1,0 +1,209 @@
+﻿@model ShopHerePJ.Models.CheckoutConfirmVM
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<style>
+    .ck-card {
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: 18px;
+        background: #fff
+    }
+
+    .addr-card {
+        border: 1px solid rgba(0,0,0,.1);
+        border-radius: 16px;
+        padding: 12px 14px;
+        cursor: pointer
+    }
+
+        .addr-card.active {
+            border-color: rgba(0,0,0,.55);
+            box-shadow: 0 10px 20px rgba(0,0,0,.06)
+        }
+
+    .addr-line {
+        color: #6c757d;
+        font-size: 13px
+    }
+
+    .item-row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        padding: 10px 0;
+        border-top: 1px solid rgba(0,0,0,.06)
+    }
+
+        .item-row:first-child {
+            border-top: 0
+        }
+
+    .thumb {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        border: 1px solid rgba(0,0,0,.08);
+        background: #f6f7f8;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+        .thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 6px
+        }
+</style>
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h4 mb-0">Xác nhận đơn hàng</h1>
+        <a class="btn btn-outline-secondary" href="/Cart">Back to cart</a>
+    </div>
+
+    <form asp-controller="Order" asp-action="PlaceOrder" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="row g-3">
+            <!-- LEFT -->
+            <div class="col-lg-7">
+                <div class="ck-card p-3 mb-3">
+                    <div class="fw-semibold mb-2">Thông tin người mua</div>
+                    <div class="row g-2">
+                        <div class="col-md-6">
+                            <div class="text-muted small">Email</div>
+                            <div class="fw-semibold">@Model.Email</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-muted small">Họ tên</div>
+                            <div class="fw-semibold">@(!string.IsNullOrWhiteSpace(Model.FullName) ? Model.FullName : "—")</div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-muted small">SĐT</div>
+                            <div class="fw-semibold">@(!string.IsNullOrWhiteSpace(Model.Phone) ? Model.Phone : "—")</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ck-card p-3 mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div class="fw-semibold">Chọn địa chỉ giao hàng</div>
+                        <a class="btn btn-sm btn-outline-dark" asp-controller="Account" asp-action="AddressCreate">+ Add</a>
+                    </div>
+
+                    <div class="row g-2">
+                        @foreach (var a in Model.ShippingAddresses)
+                        {
+                            var isActive = a.id == Model.ShippingAddressId;
+                            <div class="col-12">
+                                <label class="addr-card @(isActive ? "active" : "") w-100">
+                                    <div class="d-flex gap-2 align-items-start">
+                                        <input class="form-check-input mt-1"
+                                               type="radio"
+                                               name="ShippingAddressId"
+                                               value="@a.id"
+                                               @(isActive ? "checked" : "") />
+                                        <div class="w-100">
+                                            <div class="fw-semibold">
+                                                @(a.recipient_name ?? "—")
+                                                @if (a.is_default)
+                                                {
+                                                    <span class="badge bg-success ms-2">Default</span>
+                                                }
+                                            </div>
+                                            <div class="addr-line">@(a.phone ?? "—")</div>
+                                            <div class="addr-line">
+                                                @(a.street ?? "") @(", " + (a.ward ?? "")) @(", " + (a.district ?? "")) @(", " + (a.city ?? "")) - @a.country
+                                            </div>
+                                        </div>
+                                        <a class="btn btn-sm btn-outline-primary"
+                                           asp-controller="Account"
+                                           asp-action="AddressEdit"
+                                           asp-route-id="@a.id">Edit</a>
+                                    </div>
+                                </label>
+                            </div>
+                        }
+                    </div>
+
+                    <span asp-validation-for="ShippingAddressId" class="text-danger"></span>
+                </div>
+
+                <div class="ck-card p-3">
+                    <div class="fw-semibold mb-2">Ghi chú</div>
+                    <textarea class="form-control" name="CustomerNote" rows="3" placeholder="Ghi chú cho người bán...">@Model.CustomerNote</textarea>
+                </div>
+            </div>
+
+            <!-- RIGHT -->
+            <div class="col-lg-5">
+                <div class="ck-card p-3 mb-3">
+                    <div class="fw-semibold mb-2">Sản phẩm mua</div>
+
+                    @foreach (var it in Model.Items)
+                    {
+                        var img = it.ImageId.HasValue ? $"/media/image/{it.ImageId}" : Url.Content("~/images/placeholder.png");
+                        <div class="item-row">
+                            <div class="thumb"><img src="@img" alt="@it.ProductName" /></div>
+                            <div class="flex-grow-1">
+                                <div class="fw-semibold">@it.ProductName</div>
+                                <div class="text-muted small">@it.VariantSku - @it.VariantName</div>
+                                <div class="text-muted small">Qty: @it.Quantity</div>
+                            </div>
+                            <div class="fw-semibold text-end">@it.LineTotal.ToString("N0") đ</div>
+                        </div>
+                    }
+                </div>
+
+                <div class="ck-card p-3 mb-3">
+                    <div class="fw-semibold mb-2">Phương thức thanh toán</div>
+
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="radio" name="PaymentMethod" value="COD" checked />
+                        <label class="form-check-label">Thanh toán khi nhận hàng (COD)</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="PaymentMethod" value="BANK" disabled />
+                        <label class="form-check-label text-muted">
+                            Chuyển khoản (tạm thời chưa hỗ trợ)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="ck-card p-3">
+                    <div class="d-flex justify-content-between">
+                        <div class="text-muted">Subtotal</div>
+                        <div class="fw-semibold">@Model.Subtotal.ToString("N0") đ</div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="text-muted">Shipping</div>
+                        <div class="fw-semibold">@Model.ShippingFee.ToString("N0") đ</div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="text-muted">Tax</div>
+                        <div class="fw-semibold">@Model.TaxAmount.ToString("N0") đ</div>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="fw-bold">Grand Total</div>
+                        <div class="h5 fw-bold mb-0">@Model.GrandTotal.ToString("N0") đ</div>
+                    </div>
+
+                    <button class="btn btn-dark w-100 mt-3" type="submit">
+                        Tạo đơn hàng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

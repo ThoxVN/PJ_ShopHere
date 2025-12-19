@@ -1,0 +1,444 @@
+﻿@model ShopHerePJ.Models.ProductDetailVM
+@{
+    ViewData["Title"] = Model.Name;
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+
+    // Ảnh chính: nếu bạn đã có ImageId thì dùng /media/image/{id}
+    // Nếu chưa có thì fallback placeholder.
+    var mainImg = ViewBag.ImageId != null
+        ? $"/media/image/{ViewBag.ImageId}"
+        : Url.Content("~/images/placeholder.png");
+
+    // Chọn variant đầu tiên còn hàng
+    var firstAvailable = Model.Variants.FirstOrDefault(v => v.QtyAvailable > 0);
+}
+
+<style>
+    /* ===== Product detail like mock ===== */
+    .pd-wrap {
+        padding: 28px 0;
+    }
+
+    .pd-grid {
+        display: grid;
+        grid-template-columns: 1.1fr .9fr;
+        gap: 24px;
+    }
+
+    .pd-card {
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: 18px;
+        background: #fff;
+        overflow: hidden;
+    }
+
+    .pd-gallery {
+        padding: 18px;
+    }
+
+    .pd-main {
+        width: 100%;
+        height: 420px;
+        border-radius: 16px;
+        background: #f6f7f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+        .pd-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* ✅ không crop, không zoom */
+            object-position: center; /* ✅ canh giữa */
+            padding: 14px; /* ✅ tạo khoảng thở */
+        }
+
+
+    .pd-thumbs {
+        display: flex;
+        gap: 10px;
+        margin-top: 12px;
+    }
+
+    .pd-thumb {
+        width: 70px;
+        height: 70px;
+        border-radius: 14px;
+        border: 1px solid rgba(0,0,0,.08);
+        background: #f6f7f8;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+        .pd-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .9;
+        }
+
+        .pd-thumb.active {
+            outline: 2px solid rgba(0,0,0,.25);
+        }
+
+    .pd-info {
+        padding: 20px;
+    }
+
+    .pd-kicker {
+        font-size: 12px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #6c757d;
+    }
+
+    .pd-title {
+        font-size: 26px;
+        font-weight: 800;
+        margin: 6px 0 8px;
+        line-height: 1.1;
+    }
+
+    .pd-rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #6c757d;
+        font-size: 13px;
+    }
+
+    .pd-stars {
+        color: #f4b400;
+        letter-spacing: 1px;
+    }
+    /* màu sao */
+    .pd-price {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin: 10px 0 12px;
+    }
+
+        .pd-price .now {
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .pd-price .old {
+            text-decoration: line-through;
+            color: #9aa0a6;
+            font-size: 14px;
+        }
+
+    .pd-desc {
+        color: #495057;
+        font-size: 14px;
+        line-height: 1.6;
+        margin-top: 10px;
+    }
+
+    .pd-section-title {
+        font-weight: 700;
+        margin-top: 16px;
+        margin-bottom: 8px;
+    }
+
+    .variant-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .variant-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 14px;
+        border-radius: 14px;
+        border: 1px solid rgba(0,0,0,.12);
+        background: #fff;
+        font-weight: 650;
+        cursor: pointer;
+        user-select: none;
+        transition: transform .12s ease, box-shadow .12s ease;
+    }
+
+        .variant-pill:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 20px rgba(0,0,0,.06);
+        }
+
+    .btn-check:checked + .variant-pill {
+        border-color: rgba(0,0,0,.55);
+        box-shadow: 0 10px 20px rgba(0,0,0,.08);
+    }
+
+    .btn-check:disabled + .variant-pill {
+        opacity: .45;
+        cursor: not-allowed;
+        text-decoration: line-through;
+        background: #f6f7f8;
+    }
+
+    .pd-stock {
+        font-size: 13px;
+        color: #6c757d;
+        margin-top: 8px;
+    }
+
+    .qty-bar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 16px;
+    }
+
+    .qty-stepper {
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid rgba(0,0,0,.12);
+        border-radius: 14px;
+        overflow: hidden;
+    }
+
+        .qty-stepper button {
+            width: 42px;
+            height: 42px;
+            border: 0;
+            background: #fff;
+            font-size: 18px;
+        }
+
+        .qty-stepper input {
+            width: 56px;
+            height: 42px;
+            border: 0;
+            text-align: center;
+            outline: none;
+        }
+
+    .pd-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+        .pd-actions .btn {
+            height: 42px;
+            border-radius: 14px;
+            font-weight: 700;
+        }
+
+    .btn-add {
+        min-width: 160px;
+    }
+
+    .btn-buy {
+        min-width: 120px;
+    }
+</style>
+
+<div class="container pd-wrap">
+    <div class="pd-grid">
+
+        <!-- LEFT: GALLERY -->
+        <div class="pd-card">
+            <div class="pd-gallery">
+                <div class="pd-main">
+                    <img id="mainImage" src="@mainImg" alt="@Model.Name" />
+                </div>                
+            </div>
+        </div>
+
+        <!-- RIGHT: INFO -->
+        <div class="pd-card">
+            <div class="pd-info">
+                <div class="pd-kicker">@Model.CategoryName</div>
+                <div class="pd-title">@Model.Name</div>
+
+                <div class="pd-rating">
+                    @{
+                        var full = (int)Math.Floor((double)Model.AvgRating);
+                        var empty = 5 - full;
+                        var stars = new string('★', full) + new string('☆', empty);
+                    }
+                    <span class="pd-stars">@stars</span>
+                    <span class="text-muted">
+                        @Model.AvgRating.ToString("0.0") (@Model.ReviewCount review@(Model.ReviewCount == 1 ? "" : "s"))
+                    </span>
+                </div>
+
+
+                <div class="pd-price">
+                    <div class="now" id="priceText">
+                        @(firstAvailable != null ? firstAvailable.Price.ToString("N0") : (Model.Variants.FirstOrDefault()?.Price ?? 0).ToString("N0")) đ
+                    </div>
+                </div>
+
+                <div class="pd-desc">
+                    @if (!string.IsNullOrWhiteSpace(Model.DescriptionHtml))
+                    {
+                        @Html.Raw(Model.DescriptionHtml)
+                    }
+                    else
+                    {
+                        <span>Mô tả sản phẩm đang được cập nhật.</span>
+                    }
+                </div>
+
+                <!-- VARIANTS -->
+                <div class="pd-section-title">Variant</div>
+
+                @if (!Model.Variants.Any())
+                {
+                    <div class="text-muted">Chưa có variant.</div>
+                }
+                else
+                {
+                    <div class="variant-row">
+                        @for (int i = 0; i < Model.Variants.Count; i++)
+                        {
+                            var v = Model.Variants[i];
+                            var disabled = v.QtyAvailable <= 0;
+                            var label = $"{v.Size} - {v.Color}"; // ✅ chỉ cần: L - White
+
+                            // default check: chọn cái còn hàng đầu tiên
+                            var isChecked = firstAvailable != null
+                            ? v.VariantId == firstAvailable.VariantId
+                            : (i == 0);
+
+                            <input class="btn-check variant-radio"
+                                   type="radio"
+                                   name="variantPick"
+                                   id="v_@v.VariantId"
+                                   value="@v.VariantId"
+                                   data-price="@v.Price"
+                                   data-avail="@v.QtyAvailable"
+                                   @(isChecked ? "checked" : "")
+                                   @(disabled ? "disabled" : "") />
+
+                            <label class="variant-pill" for="v_@v.VariantId">
+                                @label
+                            </label>
+                        }
+                    </div>
+
+                    <div class="pd-stock" id="stockText"></div>
+
+                    <form asp-controller="Cart" asp-action="Add" method="post" class="mt-3">
+                        @Html.AntiForgeryToken()
+
+                        <input type="hidden" name="variantId" id="variantId" value="@(firstAvailable?.VariantId ?? Model.Variants.First().VariantId)" />
+                        <input type="hidden" name="returnUrl" value="@Context.Request.Path" />
+
+                        <div class="qty-bar">
+                            <div class="qty-stepper">
+                                <button type="button" id="btnMinus">−</button>
+                                <input type="number" name="quantity" id="qty" value="1" min="1" />
+                                <button type="button" id="btnPlus">+</button>
+                            </div>
+
+                            <div class="pd-actions">
+                                <button type="submit" class="btn btn-dark btn-add" id="btnAdd">Add to Cart</button>
+                                @* <a class="btn btn-outline-dark btn-buy" href="/Cart">Buy Now</a> *@
+                            </div>
+                        </div>
+                    </form>
+                }
+
+                @if (TempData["CartError"] != null)
+                {
+                    <div class="alert alert-warning mt-3 mb-0">@TempData["CartError"]</div>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // thumbs demo
+        document.querySelectorAll('.pd-thumb').forEach(t => {
+          t.addEventListener('click', () => {
+            document.querySelectorAll('.pd-thumb').forEach(x => x.classList.remove('active'));
+            t.classList.add('active');
+            const img = t.querySelector('img')?.getAttribute('src');
+            if(img) document.getElementById('mainImage').setAttribute('src', img);
+          });
+        });
+
+        const radios = Array.from(document.querySelectorAll('.variant-radio'));
+        const variantId = document.getElementById('variantId');
+        const qty = document.getElementById('qty');
+        const priceText = document.getElementById('priceText');
+        const stockText = document.getElementById('stockText');
+        const btnAdd = document.getElementById('btnAdd');
+        const btnMinus = document.getElementById('btnMinus');
+        const btnPlus = document.getElementById('btnPlus');
+
+        function setStateFromRadio(r){
+          const vid = Number(r.value);
+          const price = Number(r.dataset.price || 0);
+          const avail = Number(r.dataset.avail || 0);
+
+          variantId.value = vid;
+          priceText.textContent = price.toLocaleString() + " đ";
+
+          if (avail <= 0) {
+            btnAdd.disabled = true;
+            qty.value = 1;
+            qty.max = 1;
+            stockText.textContent = "Hết hàng";
+            return;
+          }
+
+          btnAdd.disabled = false;
+          qty.max = avail;
+          if (Number(qty.value) > avail) qty.value = avail;
+          if (Number(qty.value) < 1) qty.value = 1;
+          stockText.textContent = `Tồn khả dụng: ${avail}`;
+        }
+
+        function pickFirstAvailable(){
+          const first = radios.find(r => !r.disabled);
+          if(!first){
+            // all out of stock
+            if(btnAdd) btnAdd.disabled = true;
+            if(stockText) stockText.textContent = "Sản phẩm hiện đang hết hàng.";
+            if(qty){ qty.value = 1; qty.max = 1; }
+            return;
+          }
+          first.checked = true;
+          setStateFromRadio(first);
+        }
+
+        radios.forEach(r => r.addEventListener('change', () => setStateFromRadio(r)));
+
+        // init
+        const checked = radios.find(r => r.checked && !r.disabled);
+        if(checked) setStateFromRadio(checked);
+        else pickFirstAvailable();
+
+        // stepper
+        function clampQty(){
+          const max = Number(qty.max || 1);
+          let v = Number(qty.value || 1);
+          if (v < 1) v = 1;
+          if (v > max) v = max;
+          qty.value = v;
+        }
+
+        btnMinus?.addEventListener('click', () => {
+          qty.value = Math.max(1, Number(qty.value || 1) - 1);
+          clampQty();
+        });
+        btnPlus?.addEventListener('click', () => {
+          qty.value = Number(qty.value || 1) + 1;
+          clampQty();
+        });
+        qty?.addEventListener('input', clampQty);
+    </script>
+}

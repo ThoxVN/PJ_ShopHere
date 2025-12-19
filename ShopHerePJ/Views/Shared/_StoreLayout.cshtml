@@ -11,6 +11,7 @@
 
     @RenderSection("Styles", required: false)
 </head>
+
 <body>
 
     <header class="store-header">
@@ -25,25 +26,85 @@
                 <div class="collapse navbar-collapse" id="storeNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-lg-2">
                         <li class="nav-item"><a class="nav-link active" asp-controller="Home" asp-action="Index">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Pages</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Products" asp-action="Shop">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Blog" asp-action="Index">Blog</a>
+                        </li>
                     </ul>
 
                     <div class="d-flex align-items-center gap-2">
-                        <button class="btn btn-light btn-icon" type="button" data-bs-toggle="collapse" data-bs-target="#topSearch">
+                        @* <button class="btn btn-light btn-icon" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#topSearch">
                             <i class="bi bi-search"></i>
-                        </button>
-                        <a class="btn btn-light btn-icon" href="#"><i class="bi bi-person"></i></a>
-                        <a class="btn btn-light btn-icon position-relative" href="#">
-                            <i class="bi bi-heart"></i>
-                        </a>
-                        <a class="btn btn-light btn-icon position-relative" href="#">
-                            <i class="bi bi-bag"></i>
-                            <span class="badge bg-dark position-absolute top-0 start-100 translate-middle rounded-pill">0</span>
-                        </a>
+                        </button> *@
+
+                        @if (User?.Identity?.IsAuthenticated ?? false)
+                        {
+                            <div class="dropdown">
+                                <button class="btn btn-light btn-icon dropdown-toggle"
+                                        type="button"
+                                        id="userMenu"
+                                        data-bs-toggle="dropdown"
+                                        aria-expanded="false">
+                                    <i class="bi bi-person"></i>
+                                </button>
+
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+                                    <li class="px-3 py-2">
+                                        <div class="fw-semibold">@User.Identity?.Name</div>
+                                        <div class="text-muted small">@User.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress")?.Value</div>
+                                    </li>
+                                    <li><hr class="dropdown-divider"></li>
+
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-controller="Account"
+                                           asp-action="Profile">
+                                            <i class="bi bi-gear me-2"></i> Chỉnh sửa hồ sơ
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a class="dropdown-item" asp-controller="Account" asp-action="Addresses">
+                                            <i class="bi bi-geo-alt me-2"></i> Địa chỉ giao hàng
+                                        </a>
+                                    </li>
+
+
+                                    <li>
+                                        <a class="dropdown-item"
+                                           asp-controller="Account"
+                                           asp-action="Orders">
+                                            <i class="bi bi-receipt me-2"></i> Đơn hàng của tôi
+                                        </a>
+                                    </li>
+
+                                    <li><hr class="dropdown-divider"></li>
+
+                                    <li>
+                                        <form asp-controller="Auth" asp-action="Logout" method="post" class="m-0">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="dropdown-item text-danger">
+                                                <i class="bi bi-box-arrow-right me-2"></i> Logout
+                                            </button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        else
+                        {
+                            <a class="btn btn-light btn-icon"
+                               asp-controller="Auth"
+                               asp-action="Login"
+                               asp-route-returnUrl="@Context.Request.Path">
+                                <i class="bi bi-person"></i>
+                            </a>
+                        }
                     </div>
+
                 </div>
             </div>
         </nav>
@@ -64,6 +125,10 @@
     <main>
         @RenderBody()
     </main>
+    <!-- Icon xe đẩy mua hàng -->
+    <a id="cartBubble" href="@Url.Action("Index", "Cart")" title="Đi tới giỏ hàng">
+        🛒
+    </a>
 
     <footer class="border-top mt-5">
         <div class="container py-4 d-flex flex-column flex-md-row justify-content-between gap-2">

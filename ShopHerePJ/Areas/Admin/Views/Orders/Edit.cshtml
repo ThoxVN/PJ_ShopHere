@@ -1,0 +1,118 @@
+﻿@model ShopHerePJ.Areas.Admin.Models.OrderUpsertVM
+@{
+    ViewData["Title"] = "Edit Order";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Edit Order</h1>
+            <small class="text-muted">Cập nhật đơn hàng</small>
+        </div>
+        <div class="d-flex gap-2">
+            <a asp-area="Admin" asp-controller="OrderItems" asp-action="ByOrder" asp-route-orderId="@Model.Id" class="btn btn-secondary">View Items</a>
+            <a href="/Admin/Orders" class="btn btn-outline-secondary">Back</a>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-area="Admin" asp-controller="Orders" asp-action="Edit" asp-route-id="@Model.Id" method="post">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label asp-for="OrderNumber" class="form-label"></label>
+                        <input asp-for="OrderNumber" class="form-control" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">User</label>
+                        <select asp-for="UserId" class="form-select" asp-items="ViewBag.UserSelect">
+                            <option value="">-- Guest --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="Status" class="form-label"></label>
+                        <input asp-for="Status" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="PaymentStatus" class="form-label"></label>
+                        <input asp-for="PaymentStatus" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="PaymentMethod" class="form-label"></label>
+                        <input asp-for="PaymentMethod" class="form-control" />
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="PaidAt" class="form-label"></label>
+                        <input asp-for="PaidAt" type="datetime-local" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="ShippingMethod" class="form-label"></label>
+                        <input asp-for="ShippingMethod" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="TrackingNumber" class="form-label"></label>
+                        <input asp-for="TrackingNumber" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Shipping Address</label>
+                        <select asp-for="ShippingAddressId" class="form-select" asp-items="ViewBag.AddressSelect">
+                            <option value="">-- None --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Billing Address</label>
+                        <select asp-for="BillingAddressId" class="form-select" asp-items="ViewBag.AddressSelect">
+                            <option value="">-- None --</option>
+                        </select>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label asp-for="ShippingFee" class="form-label"></label>
+                        <input asp-for="ShippingFee" type="number" step="0.01" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <label asp-for="TaxAmount" class="form-label"></label>
+                        <input asp-for="TaxAmount" type="number" step="0.01" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <label asp-for="Currency" class="form-label"></label>
+                        <input asp-for="Currency" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <label asp-for="GrandTotal" class="form-label"></label>
+                        <input asp-for="GrandTotal" type="number" step="0.01" class="form-control" />
+                    </div>
+
+                    <div class="col-md-12">
+                        <label asp-for="CustomerNote" class="form-label"></label>
+                        <textarea asp-for="CustomerNote" class="form-control" rows="3"></textarea>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label asp-for="SubtotalAmount" class="form-label"></label>
+                        <input asp-for="SubtotalAmount" type="number" step="0.01" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="DiscountAmount" class="form-label"></label>
+                        <input asp-for="DiscountAmount" type="number" step="0.01" class="form-control" />
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="DeliveredAt" class="form-label"></label>
+                        <input asp-for="DeliveredAt" type="datetime-local" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button class="btn btn-primary" type="submit">Update</button>
+                    <a href="/Admin/Orders" class="btn btn-outline-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -73,8 +73,10 @@
                                            class="btn btn-outline-primary">Edit</a>
                                         <a asp-area="Admin" asp-controller="Products" asp-action="Delete" asp-route-id="@p.id"
                                            class="btn btn-outline-danger">Delete</a>
+                                        <a asp-area="Admin" asp-controller="ProductVariants" asp-action="ByProduct" asp-route-productId="@p.id"
+                                           class="btn btn-outline-secondary">Variants</a>
                                         <a asp-area="Admin" asp-controller="ProductReviews" asp-action="ByProduct" asp-route-productId="@p.id"
-                                           class="btn btn-outline-secondary">Reviews</a>
+                                           class="btn btn-outline-secondary">Reviews</a> 
                                     </div>
                                 </td>
                             </tr>

@@ -1,0 +1,439 @@
+﻿@{
+    ViewData["Title"] = "Blog";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+
+    // Demo data (sau này thay bằng Model từ DB)
+    var posts = new[]{
+        new { Id=1, Title="How to choose the right size", Excerpt="Một vài mẹo nhanh để chọn size chuẩn khi mua online.", Cat="Guide", Date="12 Dec 2025", Read="6 min", Img="~/images/blog/b1.jpg"},
+        new { Id=2, Title="Winter Outfit Ideas 2025", Excerpt="Gợi ý phối đồ mùa đông theo tone tối giản hiện đại.", Cat="Style", Date="08 Dec 2025", Read="5 min", Img="~/images/blog/b2.jpg"},
+        new { Id=3, Title="Material 101: Cotton vs. Oxford", Excerpt="So sánh chất liệu thường gặp trong sơ mi và áo thun.", Cat="Material", Date="05 Dec 2025", Read="7 min", Img="~/images/blog/b3.jpg"},
+        new { Id=4, Title="Care tips: Keep your clothes fresh", Excerpt="Cách giặt và bảo quản để áo quần bền hơn.", Cat="Care", Date="01 Dec 2025", Read="4 min", Img="~/images/blog/b4.jpg"},
+        new { Id=5, Title="Top 10 essentials for men", Excerpt="10 món đồ cơ bản tạo tủ đồ tối ưu.", Cat="Style", Date="28 Nov 2025", Read="8 min", Img="~/images/blog/b5.jpg"},
+        new { Id=6, Title="Gift guide: What to buy this season", Excerpt="Gợi ý quà tặng theo ngân sách & phong cách.", Cat="Guide", Date="20 Nov 2025", Read="6 min", Img="~/images/blog/b6.jpg"},
+    };
+
+    var cats = new[] { "All", "Style", "Guide", "Material", "Care" };
+}
+
+<style>
+    .blog-wrap {
+        padding: 26px 0;
+    }
+
+    .blog-hero {
+        border-radius: 22px;
+        background: linear-gradient(135deg,#0f172a,#1f2937);
+        color: #fff;
+        padding: 22px 18px;
+        border: 1px solid rgba(255,255,255,.12);
+        box-shadow: 0 12px 30px rgba(0,0,0,.10);
+        overflow: hidden;
+        position: relative;
+    }
+
+        .blog-hero:after {
+            content: "";
+            position: absolute;
+            inset: -80px -120px auto auto;
+            width: 260px;
+            height: 260px;
+            background: radial-gradient(circle, rgba(59,130,246,.35), rgba(59,130,246,0));
+            transform: rotate(18deg);
+        }
+
+        .blog-hero h1 {
+            font-size: 22px;
+            font-weight: 900;
+            margin: 0;
+        }
+
+        .blog-hero .sub {
+            opacity: .85;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .blog-hero .hero-actions {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+    .pill {
+        border-radius: 999px;
+        font-weight: 800;
+        padding: 10px 14px;
+    }
+
+    .pill-light {
+        background: #fff;
+        border: 0;
+        color: #111827;
+    }
+
+    .pill-soft {
+        background: rgba(255,255,255,.12);
+        border: 1px solid rgba(255,255,255,.18);
+        color: #fff;
+    }
+
+    .filter-card {
+        margin-top: 12px;
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 10px 26px rgba(0,0,0,.06);
+        overflow: hidden;
+    }
+
+        .filter-card .bd {
+            padding: 14px;
+        }
+
+    .form-control, .form-select {
+        border-radius: 14px;
+    }
+
+    .cat-tabs .nav-link {
+        border: 0;
+        border-bottom: 2px solid transparent;
+        border-radius: 0;
+        font-weight: 800;
+        color: #6b7280;
+        padding: 10px 12px;
+    }
+
+        .cat-tabs .nav-link.active {
+            color: #111827;
+            border-bottom-color: #111827;
+            background: transparent;
+        }
+
+    .post-card {
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: 18px;
+        background: #fff;
+        overflow: hidden;
+        transition: transform .12s ease, box-shadow .12s ease;
+        box-shadow: 0 8px 20px rgba(0,0,0,.05);
+        height: 100%;
+    }
+
+        .post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 28px rgba(0,0,0,.08);
+        }
+
+    .post-thumb {
+        height: 200px;
+        background: #f6f7f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(0,0,0,.06);
+    }
+
+        .post-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+    .post-body {
+        padding: 12px 14px 14px;
+    }
+
+    .post-cat {
+        font-size: 11px;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+        color: #6b7280;
+        font-weight: 900;
+    }
+
+    .post-title {
+        font-weight: 900;
+        font-size: 16px;
+        color: #111827;
+        margin: 6px 0 8px;
+        line-height: 1.25;
+        min-height: 42px;
+    }
+
+    .post-excerpt {
+        color: #6b7280;
+        font-size: 13px;
+        min-height: 40px;
+    }
+
+    .post-meta {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        color: #6b7280;
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .dot {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: #cbd5e1;
+        display: inline-block;
+    }
+
+    .btn-soft {
+        border-radius: 999px;
+        font-weight: 800;
+        padding: 8px 12px;
+        border: 1px solid rgba(0,0,0,.10);
+        background: #f8fafc;
+    }
+
+    .sidebar-card {
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: 20px;
+        background: #fff;
+        box-shadow: 0 10px 26px rgba(0,0,0,.06);
+        overflow: hidden;
+    }
+
+        .sidebar-card .hd {
+            padding: 12px 14px;
+            background: #f8fafc;
+            border-bottom: 1px solid rgba(0,0,0,.06);
+            font-weight: 900;
+        }
+
+        .sidebar-card .bd {
+            padding: 12px 14px;
+        }
+
+    .trend-item {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-top: 1px dashed rgba(0,0,0,.14);
+    }
+
+        .trend-item:first-child {
+            border-top: 0;
+            padding-top: 0;
+        }
+
+    .trend-rank {
+        width: 28px;
+        height: 28px;
+        border-radius: 10px;
+        background: #111827;
+        color: #fff;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 0 0 auto;
+        font-size: 12px;
+    }
+
+    .trend-title {
+        font-weight: 900;
+        line-height: 1.2;
+    }
+
+    .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        border: 1px solid rgba(0,0,0,.10);
+        background: #f8fafc;
+        font-weight: 800;
+        font-size: 12px;
+        margin: 4px 6px 0 0;
+    }
+</style>
+
+<div class="container blog-wrap">
+    <!-- HERO -->
+    <div class="blog-hero">
+        <h1>Blog & Stories</h1>
+        <div class="sub">Tips phối đồ • chất liệu • chăm sóc • xu hướng mới</div>
+
+        <div class="hero-actions">
+            <a class="pill pill-light text-decoration-none" href="#latest">Read latest</a>
+            <a class="pill pill-soft text-decoration-none" href="#topics">Explore topics</a>
+        </div>
+    </div>
+
+    <!-- FILTER -->
+    <div class="filter-card" id="topics">
+        <div class="bd">
+            <div class="row g-2 align-items-end">
+                <div class="col-12 col-lg-6">
+                    <label class="form-label mb-1">Search</label>
+                    <input class="form-control" placeholder="Tìm bài viết theo tiêu đề, chủ đề..." id="blogSearch" />
+                </div>
+                <div class="col-12 col-lg-3">
+                    <label class="form-label mb-1">Sort</label>
+                    <select class="form-select" id="blogSort">
+                        <option value="new">Newest</option>
+                        <option value="old">Oldest</option>
+                        <option value="title">Title A-Z</option>
+                    </select>
+                </div>
+                <div class="col-12 col-lg-3 d-grid">
+                    <button class="btn btn-dark pill" type="button" id="btnReset">Reset</button>
+                </div>
+
+                <div class="col-12">
+                    <ul class="nav justify-content-center cat-tabs mt-2" id="catTabs">
+                        @for (int i = 0; i < cats.Length; i++)
+                        {
+                            <li class="nav-item">
+                                <button class="nav-link @(i == 0 ? "active" : "")" type="button" data-cat="@cats[i]">@cats[i]</button>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GRID + SIDEBAR -->
+    <div class="row g-3 mt-1" id="latest">
+        <div class="col-12 col-lg-8">
+            <div class="row g-3" id="postGrid">
+                @foreach (var p in posts)
+                {
+                    <div class="col-12 col-md-6 post-item"
+                         data-title="@p.Title"
+                         data-cat="@p.Cat"
+                         data-date="@p.Date">
+                        <div class="post-card">
+                            <a class="text-decoration-none" asp-controller="Blog" asp-action="Details" asp-route-id="@p.Id">
+                                <div class="post-thumb">
+                                    <img src="@Url.Content(p.Img)" alt="@p.Title" onerror="this.src='@Url.Content("~/images/placeholder.jpg")'" />
+                                </div>
+                            </a>
+                            <div class="post-body">
+                                <div class="post-cat">@p.Cat</div>
+                                <div class="post-title">@p.Title</div>
+                                <div class="post-excerpt">@p.Excerpt</div>
+
+                                <div class="d-flex justify-content-between align-items-center mt-2">
+                                    <div class="post-meta">
+                                        <span>@p.Date</span><span class="dot"></span><span>@p.Read</span>
+                                    </div>
+                                    <a class="btn-soft text-decoration-none"
+                                       asp-controller="Blog" asp-action="Details" asp-route-id="@p.Id">
+                                        Read →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-4">
+            <div class="sidebar-card mb-3">
+                <div class="hd">Trending</div>
+                <div class="bd">
+                    @{
+                        var trending = posts.Take(4).ToArray();
+                        for (int i = 0; i < trending.Length; i++)
+                        {
+                            var t = trending[i];
+                            <div class="trend-item">
+                                <div class="trend-rank">@(i + 1)</div>
+                                <div>
+                                    <div class="trend-title">
+                                        <a class="text-decoration-none text-dark"
+                                           asp-controller="Blog" asp-action="Details" asp-route-id="@t.Id">
+                                            @t.Title
+                                        </a>
+                                    </div>
+                                    <div class="text-muted small">@t.Cat • @t.Read</div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="sidebar-card">
+                <div class="hd">Tags</div>
+                <div class="bd">
+                    <span class="tag">#outfit</span>
+                    <span class="tag">#winter</span>
+                    <span class="tag">#material</span>
+                    <span class="tag">#care</span>
+                    <span class="tag">#guide</span>
+                    <span class="tag">#minimal</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const tabs = Array.from(document.querySelectorAll('#catTabs [data-cat]'));
+        const items = Array.from(document.querySelectorAll('#postGrid .post-item'));
+        const search = document.getElementById('blogSearch');
+        const sort = document.getElementById('blogSort');
+        const reset = document.getElementById('btnReset');
+
+        function apply(){
+            const q = (search.value || "").trim().toLowerCase();
+            const activeTab = tabs.find(t => t.classList.contains('active'));
+            const cat = activeTab ? activeTab.getAttribute('data-cat') : 'All';
+
+            // filter
+            items.forEach(it => {
+                const title = (it.dataset.title || "").toLowerCase();
+                const c = (it.dataset.cat || "");
+                const okText = !q || title.includes(q);
+                const okCat = (cat === 'All') || (c === cat);
+                it.style.display = (okText && okCat) ? '' : 'none';
+            });
+
+            // sort visible
+            const visible = items.filter(x => x.style.display !== 'none');
+            const wrap = document.getElementById('postGrid');
+
+            const byTitle = (a,b)=> (a.dataset.title||"").localeCompare(b.dataset.title||"");
+            const byDateNew = (a,b)=> (b.dataset.date||"").localeCompare(a.dataset.date||"");
+            const byDateOld = (a,b)=> (a.dataset.date||"").localeCompare(b.dataset.date||"");
+
+            let cmp = byDateNew;
+            if(sort.value === 'old') cmp = byDateOld;
+            if(sort.value === 'title') cmp = byTitle;
+
+            visible.sort(cmp).forEach(el => wrap.appendChild(el));
+        }
+
+        tabs.forEach(btn => btn.addEventListener('click', ()=>{
+            tabs.forEach(x=>x.classList.remove('active'));
+            btn.classList.add('active');
+            apply();
+        }));
+        search.addEventListener('input', apply);
+        sort.addEventListener('change', apply);
+
+        reset.addEventListener('click', ()=>{
+            search.value = "";
+            sort.value = "new";
+            tabs.forEach(x=>x.classList.remove('active'));
+            tabs[0].classList.add('active');
+            apply();
+        });
+
+        apply();
+    </script>
+}

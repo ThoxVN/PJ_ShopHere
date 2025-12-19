@@ -57,7 +57,7 @@ namespace ShopHerePJ.Controllers
                         ImageId = imgId,
                         AvgRating = rating.Item1,
                         ReviewCount = rating.Item2,
-                        Price = null // nếu có bảng variant/price thì bạn map vào đây
+                        PriceFrom = null // nếu có bảng variant/price thì bạn map vào đây
                     };
                 }).ToList()
             };

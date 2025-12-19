@@ -1,0 +1,43 @@
+﻿@model ShopHerePJ.Data.Entities.inventory
+@{
+    ViewData["Title"] = "Delete Inventory";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <h1 class="h3 mb-1">Delete Inventory</h1>
+            <small class="text-muted">Xác nhận xoá record tồn kho</small>
+        </div>
+        <a href="/Admin/Inventories" class="btn btn-secondary">Back</a>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <p>Bạn chắc chắn muốn xoá record này?</p>
+
+            <dl class="row mb-0">
+                <dt class="col-sm-3">ID</dt>
+                <dd class="col-sm-9">@Model.id</dd>
+
+                <dt class="col-sm-3">Variant</dt>
+                <dd class="col-sm-9">@Model.variant?.sku (@Model.variant?.size / @Model.variant?.color)</dd>
+
+                <dt class="col-sm-3">On hand</dt>
+                <dd class="col-sm-9">@Model.qty_on_hand</dd>
+
+                <dt class="col-sm-3">Reserved</dt>
+                <dd class="col-sm-9">@Model.qty_reserved</dd>
+
+                <dt class="col-sm-3">Updated</dt>
+                <dd class="col-sm-9">@Model.updated_at</dd>
+            </dl>
+
+            <form asp-area="Admin" asp-controller="Inventories" asp-action="Delete" asp-route-id="@Model.id" method="post" class="mt-4">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">Delete</button>
+                <a href="/Admin/Inventories" class="btn btn-outline-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

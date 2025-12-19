@@ -16,6 +16,6 @@
         public int? ImageId { get; set; }
         public double AvgRating { get; set; }
         public int ReviewCount { get; set; }
-        public decimal? Price { get; set; } // nếu chưa có giá thì để null
+        public decimal? PriceFrom { get; set; } // nếu chưa có giá thì để null
     }
 }

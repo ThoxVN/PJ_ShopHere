@@ -1,0 +1,268 @@
+﻿@model List<ShopHerePJ.Models.CartLine>
+@{
+    ViewData["Title"] = "Cart";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+    var totalAll = Model.Sum(x => x.LineTotal);
+}
+
+<style>
+    .cart-wrap {
+        padding: 24px 0;
+    }
+
+    .cart-card {
+        border: 1px solid rgba(0,0,0,.08);
+        border-radius: 18px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .cart-head {
+        padding: 14px 18px;
+        border-bottom: 1px solid rgba(0,0,0,.06);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .cart-lines {
+        padding: 6px 0;
+    }
+
+    .cart-line {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 18px;
+        border-top: 1px solid rgba(0,0,0,.06);
+    }
+
+        .cart-line:first-child {
+            border-top: 0;
+        }
+
+    .line-check {
+        width: 18px;
+        height: 18px;
+    }
+
+    .line-thumb {
+        width: 72px;
+        height: 72px;
+        border-radius: 14px;
+        border: 1px solid rgba(0,0,0,.08);
+        background: #f6f7f8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        flex: 0 0 auto;
+    }
+
+        .line-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 8px;
+        }
+
+    .line-info {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .line-name {
+        font-weight: 800;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .line-meta {
+        color: #6c757d;
+        font-size: 13px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .line-price {
+        font-weight: 800;
+        text-align: right;
+        min-width: 120px;
+    }
+
+    .line-sub {
+        color: #6c757d;
+        font-size: 12px;
+        text-align: right;
+    }
+
+    .line-actions {
+        margin-left: 6px;
+    }
+
+    .cart-foot {
+        padding: 14px 18px;
+        border-top: 1px solid rgba(0,0,0,.06);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .sum-box {
+        text-align: right;
+    }
+
+    .sum-label {
+        color: #6c757d;
+        font-size: 13px;
+    }
+
+    .sum-total {
+        font-size: 20px;
+        font-weight: 900;
+    }
+</style>
+
+<div class="container cart-wrap">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h4 mb-0">Giỏ hàng</h1>
+
+        <form asp-controller="Cart" asp-action="Clear" method="post">
+            @Html.AntiForgeryToken()
+            <button class="btn btn-outline-secondary btn-sm" type="submit">Clear</button>
+        </form>
+    </div>
+
+    @if (TempData["CartError"] != null)
+    {
+        <div class="alert alert-warning">@TempData["CartError"]</div>
+    }
+
+    @if (!Model.Any())
+    {
+        <div class="text-muted">Giỏ hàng trống.</div>
+    }
+    else
+    {
+        <!-- IMPORTANT: chỉ 1 form duy nhất (Checkout) - KHÔNG lồng form -->
+        <form asp-controller="Order" asp-action="Checkout" method="post" id="checkoutForm">
+            @Html.AntiForgeryToken()
+
+            <div class="cart-card">
+                <div class="cart-head">
+                    <div class="fw-semibold">Cart items</div>
+
+                    <div class="form-check m-0">
+                        <input class="form-check-input line-check" type="checkbox" id="checkAll" checked />
+                        <label class="form-check-label text-muted" for="checkAll">Select all</label>
+                    </div>
+                </div>
+
+                <div class="cart-lines" id="cartLines">
+                    @foreach (var i in Model)
+                    {
+                        var imgUrl = i.ImageId.HasValue ? $"/media/image/{i.ImageId}" : Url.Content("~/images/placeholder.png");
+
+                        <div class="cart-line" data-line-total="@i.LineTotal">
+                            <!-- checkbox: chọn để tạo order -->
+                            <input class="form-check-input line-check item-check"
+                                   type="checkbox"
+                                   name="selectedVariantIds"
+                                   value="@i.VariantId"
+                                   checked />
+
+                            <!-- ảnh -->
+                            <div class="line-thumb">
+                                <img src="@imgUrl" alt="@i.ProductName" />
+                            </div>
+
+                            <!-- tên -->
+                            <div class="line-info">
+                                <div class="line-name">@i.ProductName</div>
+                                <div class="line-meta">@i.VariantName</div>
+                            </div>
+
+                            <!-- giá -->
+                            <div class="text-end">
+                                <div class="line-price">@i.UnitPrice.ToString("N0") đ</div>
+                                <div class="line-sub">Qty: @i.Quantity • Total: @i.LineTotal.ToString("N0")</div>
+                            </div>
+
+                            <!-- remove: dùng formaction (KHÔNG form con) -->
+                            <div class="line-actions">
+                                <button class="btn btn-outline-danger btn-sm"
+                                        type="submit"
+                                        formaction="@Url.Action("Remove", "Cart")"
+                                        formmethod="post"
+                                        name="variantId"
+                                        value="@i.VariantId">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="cart-foot">
+                    <div class="text-muted">
+                        * Chỉ các line được tick mới được tạo đơn hàng. Line không tick sẽ giữ lại trong cart.
+                    </div>
+
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="sum-box">
+                            <div class="sum-label">Selected total</div>
+                            <div class="sum-total" id="selectedTotal">@totalAll.ToString("N0") đ</div>
+                        </div>
+
+                        <button class="btn btn-dark" type="submit" id="btnCheckout">
+                            Checkout selected
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        const checks = Array.from(document.querySelectorAll('.item-check'));
+        const checkAll = document.getElementById('checkAll');
+        const totalEl = document.getElementById('selectedTotal');
+        const btnCheckout = document.getElementById('btnCheckout');
+
+        function recalc(){
+            let sum = 0;
+            let any = false;
+
+            checks.forEach(cb => {
+                const line = cb.closest('.cart-line');
+                const lineTotal = Number(line?.dataset?.lineTotal || 0);
+                if(cb.checked){
+                    sum += lineTotal;
+                    any = true;
+                }
+            });
+
+            totalEl.textContent = sum.toLocaleString() + " đ";
+            btnCheckout.disabled = !any;
+
+            const checkedCount = checks.filter(x => x.checked).length;
+            checkAll.checked = checkedCount === checks.length;
+            checkAll.indeterminate = checkedCount > 0 && checkedCount < checks.length;
+        }
+
+        checks.forEach(cb => cb.addEventListener('change', recalc));
+
+        checkAll?.addEventListener('change', () => {
+            checks.forEach(cb => cb.checked = checkAll.checked);
+            recalc();
+        });
+
+        recalc();
+    </script>
+}

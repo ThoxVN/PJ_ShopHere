@@ -221,6 +221,15 @@
                     <span class="text">Products</span>
                 </a>
 
+                <a class="menu-item @IsActive("Inventories")"
+                   asp-area="Admin"
+                   asp-controller="Inventories"
+                   asp-action="Index">
+                    <span class="icon"><i class="bi bi-boxes"></i></span>
+                    <span class="text">Inventory</span>
+                </a>
+
+
                 <a class="menu-item @IsActive("Orders")"
                    asp-area="Admin" asp-controller="Orders" asp-action="Index">
                     <span class="icon"><i class="bi bi-receipt"></i></span>
