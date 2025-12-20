@@ -34,6 +34,12 @@
 
                 <button class="btn btn-dark w-100" type="submit">Sign in</button>
             </form>
+            <div class="text-center mt-3">
+                <span class="text-muted">Chưa có tài khoản?</span>
+                <a asp-controller="Auth" asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl"
+                   class="text-decoration-none fw-semibold">Đăng ký</a>
+            </div>
+
         </div>
     </div>
 </div>

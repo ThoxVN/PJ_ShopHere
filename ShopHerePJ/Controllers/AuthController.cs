@@ -92,6 +92,54 @@ namespace ShopHerePJ.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpGet]
+        public IActionResult Register(string? returnUrl = null)
+    => View(new RegisterVM { ReturnUrl = returnUrl });
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterVM vm)
+        {
+            if (!ModelState.IsValid) return View(vm);
+
+            var email = (vm.Email ?? "").Trim().ToLowerInvariant();
+
+            var exists = await _context.users.AsNoTracking()
+                .AnyAsync(x => x.email.ToLower() == email);
+
+            if (exists)
+            {
+                ModelState.AddModelError(nameof(vm.Email), "Email đã tồn tại.");
+                return View(vm);
+            }
+
+            var now = DateTime.Now;
+
+            // Demo môn học: lưu plain text theo yêu cầu (không khuyến nghị thực tế)
+            var u = new user
+            {
+                email = email,
+                password_hash = vm.Password,
+                full_name = vm.FullName?.Trim(),
+                phone = vm.Phone?.Trim(),
+                role = "customer",
+                status = "active",
+                created_at = now,
+                updated_at = now
+            };
+
+            _context.users.Add(u);
+            await _context.SaveChangesAsync();
+
+            TempData["RegisterOk"] = "Đăng ký thành công. Vui lòng đăng nhập.";
+
+            if (!string.IsNullOrWhiteSpace(vm.ReturnUrl) && Url.IsLocalUrl(vm.ReturnUrl))
+                return RedirectToAction("Login", new { returnUrl = vm.ReturnUrl });
+
+            return RedirectToAction("Login");
+        }
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()

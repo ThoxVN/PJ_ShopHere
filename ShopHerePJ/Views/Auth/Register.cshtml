@@ -1,0 +1,125 @@
+﻿@model ShopHerePJ.Models.RegisterVM
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_StoreLayout.cshtml";
+}
+
+<style>
+    .auth-wrap {
+        max-width: 560px;
+    }
+
+    .auth-card {
+        border: 1px solid rgba(0,0,0,.06);
+        border-radius: 18px;
+        overflow: hidden;
+    }
+
+    .auth-head {
+        padding: 18px 20px;
+        border-bottom: 1px solid rgba(0,0,0,.06);
+        background: #fff;
+    }
+
+    .auth-body {
+        padding: 20px;
+    }
+
+    .hint {
+        font-size: 13px;
+        color: #6c757d;
+    }
+
+    .btn-icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(0,0,0,.08);
+        background: #fff;
+    }
+</style>
+
+<div class="container py-5 auth-wrap">
+    <div class="card auth-card shadow-sm">
+        <div class="auth-head d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="h4 mb-1">Create account</h1>
+                <div class="hint">Đăng ký tài khoản để mua hàng nhanh hơn</div>
+            </div>
+            <div class="d-flex gap-2">
+                <a class="btn-icon text-decoration-none text-dark" asp-controller="Home" asp-action="Index" title="Home">
+                    <i class="bi bi-house"></i>
+                </a>
+                <a class="btn-icon text-decoration-none text-dark" asp-controller="Auth" asp-action="Login" title="Login">
+                    <i class="bi bi-person"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="auth-body">
+            @if (TempData["RegisterOk"] != null)
+            {
+                <div class="alert alert-success">@TempData["RegisterOk"]</div>
+            }
+
+            <form asp-controller="Auth" asp-action="Register" method="post" novalidate>
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="ReturnUrl" />
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+                <div class="row g-3">
+                    <div class="col-12">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control" placeholder="you@example.com" autocomplete="email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label asp-for="FullName" class="form-label">Full name</label>
+                        <input asp-for="FullName" class="form-control" placeholder="Nguyễn Văn A" autocomplete="name" />
+                        <span asp-validation-for="FullName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12">
+                        <label asp-for="Phone" class="form-label">Phone (optional)</label>
+                        <input asp-for="Phone" class="form-control" placeholder="090xxxxxxx" autocomplete="tel" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label asp-for="Password" class="form-label">Password</label>
+                        <input asp-for="Password" type="password" class="form-control" autocomplete="new-password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                        <div class="hint mt-1">Tối thiểu 6 ký tự</div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label asp-for="ConfirmPassword" class="form-label">Confirm</label>
+                        <input asp-for="ConfirmPassword" type="password" class="form-control" autocomplete="new-password" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-12 d-grid mt-2">
+                        <button class="btn btn-dark btn-lg" type="submit">
+                            Create account
+                        </button>
+                    </div>
+
+                    <div class="col-12 text-center">
+                        <span class="text-muted">Đã có tài khoản?</span>
+                        <a asp-controller="Auth" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl" class="text-decoration-none fw-semibold">
+                            Đăng nhập
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

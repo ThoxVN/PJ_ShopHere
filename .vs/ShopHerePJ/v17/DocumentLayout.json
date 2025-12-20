@@ -3,24 +3,92 @@
   "WorkspaceRootPath": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\data\\entities\\product_variant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\data\\entities\\product_variant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\models\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\models\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\areas\\admin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\areas\\admin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\areas\\admin\\controllers\\imagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\areas\\admin\\controllers\\imagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\areas\\admin\\models\\admindashboardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\areas\\admin\\models\\admindashboardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\areas\\admin\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\areas\\admin\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\areas\\admin\\views\\products\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\areas\\admin\\views\\products\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\areas\\admin\\views\\products\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\areas\\admin\\views\\products\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\areas\\admin\\views\\products\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\areas\\admin\\views\\products\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\areas\\admin\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\areas\\admin\\views\\products\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\views\\shared\\_storelayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\views\\shared\\_storelayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\controllers\\productscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\wwwroot\\css\\store.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\wwwroot\\css\\store.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\views\\blog\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\views\\blog\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\data\\entities\\product_review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\data\\entities\\product_review.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\data\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\data\\entities\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|d:\\ph\u00E1t tri\u1EC3n web\\shopherepj\\shopherepj\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02AC2436-7C0A-483B-A46C-9C02E5C2029E}|ShopHerePJ\\ShopHerePJ.csproj|solutionrelative:shopherepj\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,72 +98,280 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "product_variant.cs",
-              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product_variant.cs",
-              "RelativeDocumentMoniker": "ShopHerePJ\\Data\\Entities\\product_variant.cs",
-              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product_variant.cs",
-              "RelativeToolTip": "ShopHerePJ\\Data\\Entities\\product_variant.cs",
-              "ViewState": "AgIAABEAAAAAAAAAAAA8wCMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-16T15:11:31.749Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "product.cs",
-              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product.cs",
-              "RelativeDocumentMoniker": "ShopHerePJ\\Data\\Entities\\product.cs",
-              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product.cs",
-              "RelativeToolTip": "ShopHerePJ\\Data\\Entities\\product.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAA6wB8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-16T15:11:25.957Z",
+              "DocumentIndex": 1,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Auth\\Register.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Views\\Auth\\Register.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Auth\\Register.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Views\\Auth\\Register.cshtml",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAAAG0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-20T00:03:28.703Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "product_review.cs",
-              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product_review.cs",
-              "RelativeDocumentMoniker": "ShopHerePJ\\Data\\Entities\\product_review.cs",
-              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Data\\Entities\\product_review.cs",
-              "RelativeToolTip": "ShopHerePJ\\Data\\Entities\\product_review.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "RegisterVM.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Models\\RegisterVM.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Models\\RegisterVM.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Models\\RegisterVM.cs",
+              "RelativeToolTip": "ShopHerePJ\\Models\\RegisterVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-16T15:11:25.087Z",
+              "WhenOpened": "2025-12-20T00:01:44.253Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Views\\Products\\Index.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Areas\\Admin\\Views\\Products\\Index.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Views\\Products\\Index.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Areas\\Admin\\Views\\Products\\Index.cshtml",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T14:49:47.303Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Areas\\Admin\\Controllers\\ProductsController.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "ShopHerePJ\\Areas\\Admin\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAAAiwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T14:49:17.744Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Program.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Program.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Program.cs",
+              "RelativeToolTip": "ShopHerePJ\\Program.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T14:32:10.446Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "ShopHerePJ\\Areas\\Admin\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAHkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T14:03:45.887Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAmwCMAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T14:05:38.115Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AdminDashboardVM.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Models\\AdminDashboardVM.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Areas\\Admin\\Models\\AdminDashboardVM.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Models\\AdminDashboardVM.cs",
+              "RelativeToolTip": "ShopHerePJ\\Areas\\Admin\\Models\\AdminDashboardVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T15:17:14.649Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "store.css",
-              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\wwwroot\\css\\store.css",
-              "RelativeDocumentMoniker": "ShopHerePJ\\wwwroot\\css\\store.css",
-              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\wwwroot\\css\\store.css",
-              "RelativeToolTip": "ShopHerePJ\\wwwroot\\css\\store.css",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-12-16T15:01:21.914Z",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "ShopHerePJ\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAAAH0AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T13:48:57.559Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
+              "Title": "ImagesController.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Controllers\\ImagesController.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Areas\\Admin\\Controllers\\ImagesController.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Controllers\\ImagesController.cs",
+              "RelativeToolTip": "ShopHerePJ\\Areas\\Admin\\Controllers\\ImagesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T15:17:52.879Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Areas\\Admin\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAPcAAAAAAAAAAAAAAO4AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T15:02:51.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Views\\Products\\Edit.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Areas\\Admin\\Views\\Products\\Edit.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Views\\Products\\Edit.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Areas\\Admin\\Views\\Products\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T14:49:46.659Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Views\\Products\\Delete.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Areas\\Admin\\Views\\Products\\Delete.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Views\\Products\\Delete.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Areas\\Admin\\Views\\Products\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T14:50:51.345Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Views\\Products\\Create.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Areas\\Admin\\Views\\Products\\Create.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Areas\\Admin\\Views\\Products\\Create.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Areas\\Admin\\Views\\Products\\Create.cshtml",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T14:50:51.98Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "ShopHerePJ\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T13:48:45.225Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ProductsController.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Controllers\\ProductsController.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Controllers\\ProductsController.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Controllers\\ProductsController.cs",
+              "RelativeToolTip": "ShopHerePJ\\Controllers\\ProductsController.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAAIAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T13:38:03.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "ShopHerePJ\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T13:24:01.728Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "ShopHerePJ\\Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "ShopHerePJ\\Views\\Home\\Index.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAhwEsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-16T15:00:10.543Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-19T13:22:34.096Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAAAHQAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T13:13:43.336Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "_StoreLayout.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Shared\\_StoreLayout.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Views\\Shared\\_StoreLayout.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Shared\\_StoreLayout.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Views\\Shared\\_StoreLayout.cshtml",
+              "ViewState": "AgIAAGsAAAAAAAAAAAAAAI8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T13:13:29.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "BlogController.cs",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Controllers\\BlogController.cs",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Controllers\\BlogController.cs",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Controllers\\BlogController.cs",
+              "RelativeToolTip": "ShopHerePJ\\Controllers\\BlogController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T13:12:51.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Blog\\Index.cshtml",
+              "RelativeDocumentMoniker": "ShopHerePJ\\Views\\Blog\\Index.cshtml",
+              "ToolTip": "D:\\Ph\u00E1t tri\u1EC3n Web\\ShopHerePJ\\ShopHerePJ\\Views\\Blog\\Index.cshtml",
+              "RelativeToolTip": "ShopHerePJ\\Views\\Blog\\Index.cshtml",
+              "ViewState": "AgIAAC8BAAAAAAAAAAAAAD4BAACLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-19T13:12:04.724Z"
             }
           ]
         }
